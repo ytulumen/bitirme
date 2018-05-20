@@ -1,0 +1,168 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1048576 bytes for AllocateHeap
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (memory/allocation.inline.hpp:61), pid=1000, tid=0x00000000000004dc
+#
+# JRE version:  (8.0_111-b14) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (25.111-b14 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x00000000031d2800):  JavaThread "Unknown thread" [_thread_in_vm, id=1244, stack(0x0000000002fc0000,0x00000000030c0000)]
+
+Stack: [0x0000000002fc0000,0x00000000030c0000]
+[error occurred during error reporting (printing stack bounds), id 0xc0000005]
+
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x00000000031d2800 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=1244, stack(0x0000000002fc0000,0x00000000030c0000)]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap:
+ PSYoungGen      total 28160K, used 491K [0x00000000e0b80000, 0x00000000e2a80000, 0x0000000100000000)
+  eden space 24576K, 2% used [0x00000000e0b80000,0x00000000e0bfae20,0x00000000e2380000)
+  from space 3584K, 0% used [0x00000000e2700000,0x00000000e2700000,0x00000000e2a80000)
+  to   space 3584K, 0% used [0x00000000e2380000,0x00000000e2380000,0x00000000e2700000)
+ ParOldGen       total 64512K, used 0K [0x00000000a2200000, 0x00000000a6100000, 0x00000000e0b80000)
+  object space 64512K, 0% used [0x00000000a2200000,0x00000000a2200000,0x00000000a6100000)
+ Metaspace       used 770K, capacity 4480K, committed 4480K, reserved 1056768K
+  class space    used 75K, capacity 384K, committed 384K, reserved 1048576K
+
+Card table byte_map: [0x0000000003690000,0x0000000003980000] byte_map_base: 0x000000000317f000
+
+Marking Bits: (ParMarkBitMap*) 0x0000000076e5a6c0
+ Begin Bits: [0x0000000004380000, 0x0000000005af8000)
+ End Bits:   [0x0000000005af8000, 0x0000000007270000)
+
+Polling page: 0x0000000000f00000
+
+CodeCache: size=245760Kb used=328Kb max_used=328Kb free=245431Kb
+ bounds [0x000000000f010000, 0x000000000f280000, 0x000000001e010000]
+ total_blobs=58 nmethods=0 adapters=38
+ compilation: enabled
+
+Compilation events (0 events):
+No events
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (10 events):
+Event: 0.028 loading class java/lang/Short
+Event: 0.028 loading class java/lang/Short done
+Event: 0.028 loading class java/lang/Integer
+Event: 0.028 loading class java/lang/Integer done
+Event: 0.028 loading class java/lang/Long
+Event: 0.028 loading class java/lang/Long done
+Event: 0.029 loading class java/lang/NullPointerException
+Event: 0.029 loading class java/lang/NullPointerException done
+Event: 0.029 loading class java/lang/ArithmeticException
+Event: 0.029 loading class java/lang/ArithmeticException done
+
+
+Dynamic libraries:
+0x00007ff7a7350000 - 0x00007ff7a7387000 	C:\Program Files\Java\jdk1.8.0_111\bin\java.exe
+0x00007fff57fc0000 - 0x00007fff5816d000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007fff57e80000 - 0x00007fff57fbe000 	C:\WINDOWS\system32\KERNEL32.DLL
+0x00007fff552a0000 - 0x00007fff553b6000 	C:\WINDOWS\system32\KERNELBASE.dll
+0x00007fff53a90000 - 0x00007fff53b1e000 	C:\WINDOWS\system32\apphelp.dll
+0x00007fff38d50000 - 0x00007fff38da3000 	C:\WINDOWS\AppPatch\AppPatch64\AcGenral.DLL
+0x00007fff572a0000 - 0x00007fff5734a000 	C:\WINDOWS\system32\msvcrt.dll
+0x00007fff55210000 - 0x00007fff5523e000 	C:\WINDOWS\system32\SspiCli.dll
+0x00007fff57910000 - 0x00007fff57964000 	C:\WINDOWS\system32\SHLWAPI.dll
+0x00007fff57ca0000 - 0x00007fff57e17000 	C:\WINDOWS\system32\USER32.dll
+0x00007fff56f20000 - 0x00007fff570b4000 	C:\WINDOWS\system32\ole32.dll
+0x00007fff55730000 - 0x00007fff56c5c000 	C:\WINDOWS\system32\SHELL32.dll
+0x00007fff546e0000 - 0x00007fff54701000 	C:\WINDOWS\SYSTEM32\USERENV.dll
+0x00007fff579d0000 - 0x00007fff57a7a000 	C:\WINDOWS\system32\ADVAPI32.dll
+0x00007fff4aa60000 - 0x00007fff4aa7e000 	C:\WINDOWS\SYSTEM32\MPR.dll
+0x00007fff570f0000 - 0x00007fff57230000 	C:\WINDOWS\system32\RPCRT4.dll
+0x00007fff57970000 - 0x00007fff579c9000 	C:\WINDOWS\SYSTEM32\sechost.dll
+0x00007fff57a80000 - 0x00007fff57c92000 	C:\WINDOWS\SYSTEM32\combase.dll
+0x00007fff575d0000 - 0x00007fff5771b000 	C:\WINDOWS\system32\GDI32.dll
+0x00007fff550f0000 - 0x00007fff55105000 	C:\WINDOWS\SYSTEM32\profapi.dll
+0x00007fff539a0000 - 0x00007fff53a52000 	C:\WINDOWS\SYSTEM32\SHCORE.dll
+0x00007fff57720000 - 0x00007fff57756000 	C:\WINDOWS\system32\IMM32.DLL
+0x00007fff573b0000 - 0x00007fff57501000 	C:\WINDOWS\system32\MSCTF.dll
+0x00007fff550a0000 - 0x00007fff550d2000 	C:\windows\system32\nvinitx.dll
+0x00007fff55090000 - 0x00007fff5509a000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x000000000f000000 - 0x000000000f006000 	C:\Program Files\NVIDIA Corporation\CoProcManager\_etoured.dll
+0x00007fff52b70000 - 0x00007fff52ba2000 	C:\Program Files\NVIDIA Corporation\CoProcManager\nvd3d9wrapx.dll
+0x00007fff56d30000 - 0x00007fff56f0a000 	C:\WINDOWS\system32\SETUPAPI.dll
+0x00007fff551c0000 - 0x00007fff5520f000 	C:\WINDOWS\system32\CFGMGR32.dll
+0x00007fff52b40000 - 0x00007fff52b62000 	C:\Program Files\NVIDIA Corporation\CoProcManager\nvdxgiwrapx.dll
+0x00007fff52fd0000 - 0x00007fff5324a000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.9600.17810_none_6240b9c7ecbd0bda\COMCTL32.dll
+0x0000000050070000 - 0x0000000050142000 	C:\Program Files\Java\jdk1.8.0_111\jre\bin\msvcr100.dll
+0x0000000076640000 - 0x0000000076eda000 	C:\Program Files\Java\jdk1.8.0_111\jre\bin\server\jvm.dll
+0x00007fff4c570000 - 0x00007fff4c579000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007fff52a30000 - 0x00007fff52a52000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007fff55660000 - 0x00007fff55667000 	C:\WINDOWS\system32\PSAPI.DLL
+0x00007fff57e20000 - 0x00007fff57e7a000 	C:\WINDOWS\system32\WS2_32.dll
+0x00007fff52500000 - 0x00007fff5252a000 	C:\WINDOWS\SYSTEM32\WINMMBASE.dll
+0x00007fff570e0000 - 0x00007fff570e9000 	C:\WINDOWS\system32\NSI.dll
+0x00007fff53d00000 - 0x00007fff53d28000 	C:\WINDOWS\SYSTEM32\DEVOBJ.dll
+0x00000000525c0000 - 0x00000000525cf000 	C:\Program Files\Java\jdk1.8.0_111\jre\bin\verify.dll
+0x0000000052590000 - 0x00000000525b9000 	C:\Program Files\Java\jdk1.8.0_111\jre\bin\java.dll
+0x0000000075c20000 - 0x0000000075c43000 	C:\Program Files\Java\jdk1.8.0_111\jre\bin\instrument.dll
+0x0000000052570000 - 0x0000000052586000 	C:\Program Files\Java\jdk1.8.0_111\jre\bin\zip.dll
+
+VM Arguments:
+jvm_args: -javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2017.3\lib\idea_rt.jar=62988:C:\Program Files\JetBrains\IntelliJ IDEA 2017.3\bin -Dfile.encoding=UTF-8 
+java_command: sample.Main
+java_class_path (initial): C:\Program Files\Java\jdk1.8.0_111\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\deploy.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\access-bridge-64.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\cldrdata.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\dnsns.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\jaccess.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\jfxrt.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\localedata.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\nashorn.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\sunec.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\sunjce_provider.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\sunmscapi.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\sunpkcs11.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\ext\zipfs.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\javaws.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\jfxswt.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\management-agent.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\plugin.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_111\jre\lib\rt.jar;C:\Users\yasin\Downloads\javafx\first\target\classes;C:\Program Files\JetBrains\IntelliJ IDEA 2017.3\lib\idea_rt.jar
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+PATH=C:\Program Files (x86)\Kingston SSD Toolbox;C:\app\misafir\product\11.2.0\dbhome_2\bin;C:\app\misafir\product\11.2.0\dbhome_1\bin;C:\ProgramData\Oracle\Java\javapath;c:\MinGW\bin;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files (x86)\Skype\Phone\;C:\Program Files\PuTTY\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\130\DTS\Binn\;C:\Program Files\Microsoft SQL Server\130\DTS\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\Client SDK\ODBC\130\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Windows Live\Shared;C;\MinGW\bin
+USERNAME=yasin
+LD_LIBRARY_PATH=C:\Program Files (x86)\Kingston SSD Toolbox
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 58 Stepping 9, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 8.1 , 64 bit Build 9600 (6.3.9600.17415)
+
+CPU:total 8 (4 cores per cpu, 2 threads per core) family 6 model 58 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, clmul, erms, ht, tsc, tscinvbit, tscinv
+
+Memory: 4k page, physical 6148976k(1222412k free), swap 9294704k(5120k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (25.111-b14) for windows-amd64 JRE (1.8.0_111-b14), built on Sep 22 2016 19:24:05 by "java_re" with MS VC++ 10.0 (VS2010)
+
+time: Wed May 09 16:39:07 2018
+elapsed time: 0 seconds (0d 0h 0m 0s)
+

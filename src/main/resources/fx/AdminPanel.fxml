@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.AdminPanelController">
+   <children>
+      <Button layoutX="524.0" layoutY="18.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
+      <TabPane layoutX="27.0" layoutY="59.0" prefHeight="393.0" prefWidth="511.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Election">
+            <content>
+              <AnchorPane prefHeight="293.0" prefWidth="511.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#addElection" prefHeight="49.0" prefWidth="366.0" text="Add Election" />
+                        <Button layoutY="60.0" mnemonicParsing="false" onAction="#showElections" prefHeight="49.0" prefWidth="366.0" text="Show Elections" />
+                        <Button layoutY="117.0" mnemonicParsing="false" onAction="#deleteElection" prefHeight="49.0" prefWidth="366.0" text="Delete Election" />
+                        <Button layoutY="175.0" mnemonicParsing="false" onAction="#showResults" prefHeight="49.0" prefWidth="366.0" text="Show Results" />
+                        <Button layoutY="246.0" mnemonicParsing="false" onAction="#editElection" prefHeight="57.0" prefWidth="367.0" text="Edit Election" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Candidate">
+               <content>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#showCandidates" prefHeight="49.0" prefWidth="366.0" text="Show Candidates" />
+                        <Button layoutX="14.0" layoutY="146.0" mnemonicParsing="false" onAction="#deleteCandidate" prefHeight="49.0" prefWidth="366.0" text="Delete Candidate" />
+                        <Button layoutX="14.0" layoutY="80.0" mnemonicParsing="false" onAction="#addCandidate" prefHeight="49.0" prefWidth="366.0" text="Add Candidate" />
+                        <Button layoutX="14.0" layoutY="208.0" mnemonicParsing="false" onAction="#editCandidate" prefHeight="56.0" prefWidth="365.0" text="Edit Candidate" />
+                     </children>
+                  </AnchorPane>
+               </content>
+          </Tab>
+            <Tab text="Voter">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Button layoutX="14.0" layoutY="85.0" mnemonicParsing="false" onAction="#showVoters" prefHeight="49.0" prefWidth="366.0" text="Show Voters" />
+                        <Button layoutX="14.0" layoutY="154.0" mnemonicParsing="false" onAction="#deleteVoter" prefHeight="49.0" prefWidth="366.0" text="Delete Voter" />
+                        <Button layoutX="14.0" layoutY="26.0" mnemonicParsing="false" onAction="#addVoter" prefHeight="49.0" prefWidth="366.0" text="Add Voter" />
+                        <Button layoutX="14.0" layoutY="212.0" mnemonicParsing="false" onAction="#editVoter" prefHeight="50.0" prefWidth="367.0" text="Edit Voter" />
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.AddElectionController">
+   <children>
+      <Button layoutX="64.0" layoutY="35.0" mnemonicParsing="false" onAction="#back" text="Back" />
+      <Button layoutX="488.0" layoutY="471.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
+      <TextField fx:id="electionid" layoutX="105.0" layoutY="102.0" promptText="Election ID" />
+      <TextArea fx:id="topic" layoutX="105.0" layoutY="158.0" prefHeight="200.0" prefWidth="200.0" promptText="Topic" />
+      <TextField fx:id="title" layoutX="366.0" layoutY="102.0" promptText="Title" />
+      <Button layoutX="415.0" layoutY="400.0" mnemonicParsing="false" onAction="#submitElection" text="Submit" />
+   </children>
+</AnchorPane>
