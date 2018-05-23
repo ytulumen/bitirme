@@ -28,7 +28,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
+// TODO: add finger print readerrrr
 public class AddVoterController implements Initializable {
     @FXML
     private TextField identityNumber;

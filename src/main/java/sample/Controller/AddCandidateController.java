@@ -1,4 +1,4 @@
-package sample.AFewWorks;
+package sample.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +20,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import sample.Model.Candidate;
+import sample.Model.Election;
 
 import java.io.File;
 import java.io.IOException;
@@ -71,25 +72,31 @@ public class AddCandidateController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Configuration config = new Configuration();
-        config.configure();
-        config.addAnnotatedClass(Candidate.class);
-        serviceRegistry = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();
-        factory = config.buildSessionFactory(serviceRegistry);
+
     }
 
     @FXML
     public void submitCandidate(ActionEvent event)   {
-        boolean insertFlag = true;
+        boolean idControlFlag = true, electionIdControlFlag = false;
         List<Candidate> candidates = this.getCandidates();
         for (Candidate candidate: candidates ) {
             if(candidate.getIdentityNumber() == Long.parseLong(identityNumber.getText(), 10)){
                 errorAlert();
-                insertFlag = false;
+                idControlFlag = false;
             }
 
         }
-        if (insertFlag){
+        List<Election> elections = this.getElections();
+        for (Election election: elections ) {
+            if(election.getElectionID() == Integer.parseInt(electionid.getText())){
+                electionIdControlFlag = true;
+                break;
+            }
+        }
+        if(!electionIdControlFlag){
+            errorAlert();
+        }
+        if (idControlFlag && electionIdControlFlag){
             insertCandidate(new Candidate(name.getText(), surname.getText(), Long.parseLong(identityNumber.getText(), 10),
                     password.getText(), street.getText(), number.getText(), town.getText(), city.getText(), description.getText(),
                      selectedFile.getAbsolutePath(), Integer.parseInt(electionid.getText()), 0));
@@ -108,6 +115,12 @@ public class AddCandidateController implements Initializable {
     }
     private int insertCandidate(Candidate candidate)
     {
+        Configuration config = new Configuration();
+        config.configure();
+        config.addAnnotatedClass(Candidate.class);
+        serviceRegistry = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();
+        factory = config.buildSessionFactory(serviceRegistry);
+
         Session session = factory.openSession();
         Transaction tx = null;
         Integer userIdSaved = null;
@@ -127,6 +140,12 @@ public class AddCandidateController implements Initializable {
 
     }
     private List<Candidate> getCandidates() {
+        Configuration config = new Configuration();
+        config.configure();
+        config.addAnnotatedClass(Candidate.class);
+        serviceRegistry = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();
+        factory = config.buildSessionFactory(serviceRegistry);
+
         Session sesn = factory.openSession();
         Transaction tx = null;
         List<Candidate> candidates = new ArrayList<Candidate>();
@@ -169,5 +188,27 @@ public class AddCandidateController implements Initializable {
         alert.setHeaderText("Database Error");
         alert.setContentText("There is an candidate with same id or check your database connections");
         alert.showAndWait();
+    }
+    private List<Election> getElections() {
+        Configuration config = new Configuration();
+        config.configure();
+        config.addAnnotatedClass(Election.class);
+        serviceRegistry = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();
+        factory = config.buildSessionFactory(serviceRegistry);
+
+        Session sesn = factory.openSession();
+        Transaction tx = null;
+        List<Election> elections = new ArrayList<>();
+        try {
+            tx = sesn.beginTransaction();
+            elections = (List) sesn.createQuery("from Election").list();
+            tx.commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            sesn.close();
+        }
+
+        return elections;
     }
 }

@@ -1,4 +1,4 @@
-package sample.NotDone;
+package sample.AFewWorks;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -33,7 +33,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
+// TODO: remove some editable specifications
 public class CandidatePanelController implements Initializable {
     private static SessionFactory factory;
     private static ServiceRegistry serviceRegistry;

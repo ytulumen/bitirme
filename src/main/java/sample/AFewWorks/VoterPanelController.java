@@ -1,4 +1,4 @@
-package sample.Controller;
+package sample.AFewWorks;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,7 +28,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-
+// TODO: make elections to be selectable
 public class VoterPanelController implements Initializable {
 
     private static SessionFactory factory;

@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.NotDone.CandidatePanelController">
+<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AFewWorks.CandidatePanelController">
    <children>
       <Button layoutX="33.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
       <ImageView fitHeight="79.0" fitWidth="149.0" layoutX="348.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true" />

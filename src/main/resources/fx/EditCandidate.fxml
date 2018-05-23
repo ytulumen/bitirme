@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="sample.NotDone.EditCandidateController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.NotDone.EditCandidateController">
+   <children>
+      <Button layoutX="380.0" layoutY="410.0" mnemonicParsing="false" onAction="#loadImage" text="Change Picture" />
+      <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" layoutX="357.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" />
+      <Label layoutX="244.0" layoutY="44.0" prefHeight="17.0" prefWidth="149.0" text="EDIT CANDIDATE" />
+      <TextField fx:id="name" layoutX="109.0" layoutY="82.0" promptText="Name" />
+      <TextField fx:id="surname" layoutX="109.0" layoutY="123.0" promptText="Surname" />
+      <PasswordField fx:id="password" layoutX="109.0" layoutY="164.0" promptText="Password" />
+      <TextField fx:id="street" layoutX="357.0" layoutY="82.0" promptText="Street" />
+      <TextField fx:id="number" layoutX="357.0" layoutY="127.0" promptText="Number" />
+      <TextField fx:id="town" layoutX="357.0" layoutY="168.0" promptText="Town" />
+      <TextField fx:id="city" layoutX="357.0" layoutY="211.0" promptText="City" />
+      <Button layoutX="465.0" layoutY="445.0" mnemonicParsing="false" onAction="#submitCandidate" text="Submit" />
+      <TextArea fx:id="description" layoutX="109.0" layoutY="210.0" prefHeight="131.0" prefWidth="149.0" promptText="Description" />
+      <Button layoutX="43.0" layoutY="24.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
+   </children>
 </AnchorPane>
