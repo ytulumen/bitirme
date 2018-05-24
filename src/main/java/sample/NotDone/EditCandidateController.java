@@ -37,9 +37,9 @@ public class EditCandidateController implements Initializable {
     private static SessionFactory factory;
     private static ServiceRegistry serviceRegistry;
     private int candidateId;
+    private Candidate candidate;
     private ActionEvent actionEvent;
 
-    @FXML
     private long identityNumber;  //because id not changeable
 
     @FXML
@@ -103,9 +103,38 @@ public class EditCandidateController implements Initializable {
     }
     @FXML
     public void submitCandidate(ActionEvent event) {
+        if(name.getText() == null || name.getText().trim().isEmpty()){
+            name.setText(candidate.getName());
+        }
+        if(surname.getText() == null || surname.getText().trim().isEmpty()){
+            surname.setText(candidate.getSurname());
+        }
+        if(password.getText() == null || password.getText().trim().isEmpty()){
+            password.setText(candidate.getPassword());
+        }
+        if(street.getText() == null || street.getText().trim().isEmpty()){
+            street.setText(candidate.getStreet());
+        }
+        if(number.getText() == null || number.getText().trim().isEmpty()){
+            number.setText(candidate.getNumber());
+        }
+        if(town.getText() == null || town.getText().trim().isEmpty()){
+            town.setText(candidate.getTown());
+        }
+        if(city.getText() == null || city.getText().trim().isEmpty()){
+            city.setText(candidate.getCity());
+        }
+        if(description.getText() == null || description.getText().trim().isEmpty()){
+            description.setText(candidate.getDescription());
+        }
+        if(selectedFile == null || selectedFile.getAbsolutePath().trim().isEmpty()){
+            selectedFile = new File(candidate.getImagePath());
+        }
+
+
         updateCandidate(new Candidate(name.getText(), surname.getText(), identityNumber,
                 password.getText(), street.getText(), number.getText(), town.getText(), city.getText(), description.getText(),
-                selectedFile.getAbsolutePath(), 4, 0));
+                selectedFile.getAbsolutePath(), candidate.getElectionid(), candidate.getVotecounter()));
     }
 
     private Candidate getCandidate() {
@@ -114,7 +143,7 @@ public class EditCandidateController implements Initializable {
         List<Candidate> candidates = new ArrayList<>();
         try {
             tx = sesn.beginTransaction();
-            candidates = (List) sesn.createQuery("from Candidate where id = '" + candidateId + "'").list();
+            candidates = (List) sesn.createQuery("from Candidate where identityNumber = '" + candidateId + "'").list();
             tx.commit();
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -127,7 +156,7 @@ public class EditCandidateController implements Initializable {
         this.candidateId = id;
     }
     public void loadCandidate(){
-        Candidate candidate = getCandidate();
+        candidate = getCandidate();
         identityNumber = candidate.getIdentityNumber();
         name.setText(candidate.getName());
         surname.setText(candidate.getSurname());
@@ -178,7 +207,7 @@ public class EditCandidateController implements Initializable {
                     ", city = '" + candidate.getCity() + "'" +
                     ", description = '" + candidate.getDescription() + "'" +
                     ", imagePath = '" + getPath(candidate.getImagePath()) + "'" +
-                    " where id = '" + candidateId + "'").executeUpdate();
+                    " where identityNumber = '" + candidateId + "'").executeUpdate();
             tx.commit();
         } catch (HibernateException e) {
             e.printStackTrace();

@@ -75,21 +75,56 @@ public class AddVoterController implements Initializable {
     }
 
     public void submitVoter(ActionEvent event) {
-        boolean insertFlag = true;
+        boolean insertFlag = true, emptyFlag = true;
         List<Voter> voters = this.getVoters();
-        for (Voter voter: voters ) {
-            if(voter.getIdentityNumber() == Long.parseLong(identityNumber.getText(), 10)){
-                errorAlert();
-                insertFlag = false;
+
+        if(name.getText() == null || name.getText().trim().isEmpty()){
+            name.getStyleClass().add("error");
+            emptyFlag = false;
+        }
+        if(surname.getText() == null || surname.getText().trim().isEmpty()){
+            emptyFlag = false;
+            surname.getStyleClass().add("error");
+        }
+        if(password.getText() == null || password.getText().trim().isEmpty()){
+            emptyFlag = false;
+            password.getStyleClass().add("error");
+        }
+        if(street.getText() == null || street.getText().trim().isEmpty()){
+            emptyFlag = false;
+            street.getStyleClass().add("error");
+        }
+        if(number.getText() == null || number.getText().trim().isEmpty()){
+            emptyFlag = false;
+            number.getStyleClass().add("error");
+        }
+        if(town.getText() == null || town.getText().trim().isEmpty()){
+            emptyFlag = false;
+            town.getStyleClass().add("error");
+        }
+        if(city.getText() == null || city.getText().trim().isEmpty()){
+            emptyFlag = false;
+            city.getStyleClass().add("error");
+        }
+        if(identityNumber.getText() == null || identityNumber.getText().trim().isEmpty()){
+            emptyFlag = false;
+            identityNumber.getStyleClass().add("error");
+        }
+
+        if (emptyFlag){
+            for (Voter voter: voters ) {
+                if(voter.getIdentityNumber() == Long.parseLong(identityNumber.getText(), 10)){
+                    errorAlert();
+                    insertFlag = false;
+                }
+            }
+            if (insertFlag){
+                insertVoter(new Voter(name.getText(), surname.getText(), Long.parseLong(identityNumber.getText(), 10),
+                        password.getText(), street.getText(), number.getText(), town.getText(), city.getText()));
+                actionEvent = event;
+                loadScene("AdminPanel");
             }
         }
-        if (insertFlag){
-            insertVoter(new Voter(name.getText(), surname.getText(), Long.parseLong(identityNumber.getText(), 10),
-                    password.getText(), street.getText(), number.getText(), town.getText(), city.getText()));
-        }
-        actionEvent = event;
-        loadScene("AdminPanel");
-
     }
     public void back(ActionEvent event) {
         actionEvent = event;

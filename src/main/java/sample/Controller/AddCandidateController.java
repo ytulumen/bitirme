@@ -78,32 +78,123 @@ public class AddCandidateController implements Initializable {
     @FXML
     public void submitCandidate(ActionEvent event)   {
         boolean idControlFlag = true, electionIdControlFlag = false;
+        boolean emptyFlag = true;
         List<Candidate> candidates = this.getCandidates();
-        for (Candidate candidate: candidates ) {
-            if(candidate.getIdentityNumber() == Long.parseLong(identityNumber.getText(), 10)){
-                errorAlert();
-                idControlFlag = false;
-            }
 
+        if(name.getText() == null || name.getText().trim().isEmpty()){
+            name.getStyleClass().add("error");
+            emptyFlag = false;
+        }else {
+            name.getStyleClass().add("best");
+        }
+        if(surname.getText() == null || surname.getText().trim().isEmpty()){
+            emptyFlag = false;
+            surname.getStyleClass().add("error");
+        }else {
+            surname.getStyleClass().add("best");
+        }
+        if(password.getText() == null || password.getText().trim().isEmpty()){
+            emptyFlag = false;
+            password.getStyleClass().add("error");
+        }else {
+            password.getStyleClass().add("best");
+        }
+        if(street.getText() == null || street.getText().trim().isEmpty()){
+            emptyFlag = false;
+            street.getStyleClass().add("error");
+        }else {
+            street.getStyleClass().add("best");
+        }
+        if(number.getText() == null || number.getText().trim().isEmpty()){
+            emptyFlag = false;
+            number.getStyleClass().add("error");
+        }else {
+            number.getStyleClass().add("best");
+        }
+        if(town.getText() == null || town.getText().trim().isEmpty()){
+            emptyFlag = false;
+            town.getStyleClass().add("error");
+        }else {
+            town.getStyleClass().add("best");
+        }
+        if(city.getText() == null || city.getText().trim().isEmpty()){
+            emptyFlag = false;
+            city.getStyleClass().add("error");
+        }else {
+            city.getStyleClass().add("best");
+        }
+        if(description.getText() == null || description.getText().trim().isEmpty()){
+            emptyFlag = false;
+            description.getStyleClass().add("error");
+        }else {
+            description.getStyleClass().add("best");
+        }
+        if(identityNumber.getText() == null || identityNumber.getText().trim().isEmpty()){
+            emptyFlag = false;
+            identityNumber.getStyleClass().add("error");
+        }else {
+            identityNumber.getStyleClass().add("best");
+        }
+        if(electionid.getText() == null || electionid.getText().trim().isEmpty()){
+            emptyFlag = false;
+            electionid.getStyleClass().add("error");
+        }else {
+            electionid.getStyleClass().add("best");
+        }
+        if(selectedFile == null || selectedFile.getAbsolutePath().trim().isEmpty()){
+            emptyFlag = false;
+            emptyAlert("Image");
+        }
+
+        try {
+            Long id = Long.parseLong(identityNumber.getText(), 10);
+            for (Candidate candidate: candidates ) {
+                if(candidate.getIdentityNumber() == id){
+                    errorAlert("candidate");
+                    idControlFlag = false;
+                    identityNumber.getStyleClass().remove("best");
+                    identityNumber.getStyleClass().add("error");
+                }
+            }
+        }catch (NumberFormatException e){
+            errorAlert("candidate");
+            idControlFlag = false;
+            identityNumber.getStyleClass().remove("best");
+            identityNumber.getStyleClass().add("error");
+            e.printStackTrace();
         }
         List<Election> elections = this.getElections();
-        for (Election election: elections ) {
-            if(election.getElectionID() == Integer.parseInt(electionid.getText())){
-                electionIdControlFlag = true;
-                break;
+        try {
+            int id = Integer.parseInt(electionid.getText());
+            for (Election election: elections ) {
+                if(election.getElectionID() == id){
+                    electionIdControlFlag = true;
+                    break;
+                }
             }
+        }catch (NumberFormatException e){
+            electionIdControlFlag = false;
+            errorAlert("election");
+            electionid.getStyleClass().remove("best");
+            electionid.getStyleClass().add("error");
+            e.printStackTrace();
         }
         if(!electionIdControlFlag){
-            errorAlert();
-        }
-        if (idControlFlag && electionIdControlFlag){
-            insertCandidate(new Candidate(name.getText(), surname.getText(), Long.parseLong(identityNumber.getText(), 10),
-                    password.getText(), street.getText(), number.getText(), town.getText(), city.getText(), description.getText(),
-                     selectedFile.getAbsolutePath(), Integer.parseInt(electionid.getText()), 0));
+            errorAlert("election");
+            electionid.getStyleClass().remove("best");
+            electionid.getStyleClass().add("error");
+
         }
 
-        this.actionEvent = event;
-        loadScene("AdminPanel");
+
+        if (idControlFlag && electionIdControlFlag && emptyFlag){
+            insertCandidate(new Candidate(name.getText(), surname.getText(), Long.parseLong(identityNumber.getText(), 10),
+                    password.getText(), street.getText(), number.getText(), town.getText(), city.getText(), description.getText(),
+                    selectedFile.getAbsolutePath(), Integer.parseInt(electionid.getText()), 0));
+            this.actionEvent = event;
+            loadScene("AdminPanel");
+        }
+
     }
     public void back(ActionEvent event) {
         this.actionEvent = event;
@@ -182,11 +273,16 @@ public class AddCandidateController implements Initializable {
 
         selectedFile = fileChooser.showOpenDialog(new Stage());
     }
-    private void errorAlert() {
+    private void errorAlert(String errorString) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText("Database Error");
-        alert.setContentText("There is an candidate with same id or check your database connections");
+        if(errorString.equals("election")){
+            alert.setContentText("There is any election with election id");
+        }
+        else if(errorString.equals("candidate")){
+            alert.setContentText("There is an candidate with same id or check your database connections");
+        }
         alert.showAndWait();
     }
     private List<Election> getElections() {
@@ -210,5 +306,12 @@ public class AddCandidateController implements Initializable {
         }
 
         return elections;
+    }
+    private void emptyAlert(String alertString) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Empty field error");
+        alert.setContentText(alertString + " can not be null !");
+        alert.showAndWait();
     }
 }

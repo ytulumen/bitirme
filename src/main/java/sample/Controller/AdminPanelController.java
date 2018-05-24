@@ -84,7 +84,7 @@ public class AdminPanelController implements Initializable {
     @FXML
     public void editCandidate(ActionEvent event){
         this.actionEvent = event;
-        loadScene("EditCandidate");
+        loadScene("SelectEditableCandidate");
     }
     @FXML
     public void editVoter(ActionEvent event){

@@ -8,7 +8,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import org.hibernate.HibernateException;
@@ -18,9 +17,7 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import sample.Model.Candidate;
 import sample.Model.Election;
-import sample.Model.Voter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,20 +25,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class AddElectionController implements Initializable {
-
-    @FXML
-    private TextField electionid;
-
-    @FXML
-    private TextArea topic;
-
-    @FXML
-    private TextField title;
-
-    private ActionEvent actionEvent;
+public class DeleteElectionController implements Initializable {
     private static SessionFactory factory;
     private static ServiceRegistry serviceRegistry;
+    private ActionEvent actionEvent;
+
+    @FXML
+    private TextField electionID;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Configuration config = new Configuration();
@@ -51,37 +42,39 @@ public class AddElectionController implements Initializable {
         factory = config.buildSessionFactory(serviceRegistry);
     }
     @FXML
-    public void submitElection(ActionEvent event){
-        boolean insertFlag = true, emptyFlag = true;
+    public void delete(ActionEvent event){
+        boolean deleteFlag = true;
         List<Election> elections = this.getElections();
 
-        if(topic.getText() == null || topic.getText().trim().isEmpty()){
-            emptyFlag = false;
-            topic.getStyleClass().add("error");
-        }
-        if(title.getText() == null || title.getText().trim().isEmpty()){
-            emptyFlag = false;
-            title.getStyleClass().add("error");
-        }
-        if(electionid.getText() == null || electionid.getText().trim().isEmpty()) {
-            emptyFlag = false;
-            electionid.getStyleClass().add("error");
-        }
-
-        if (emptyFlag){
-            for (Election election: elections ) {
-                if(election.getElectionID() == Integer.parseInt(electionid.getText())){
-                    errorAlert();
-                    insertFlag = false;
-                }
+        for (Election election : elections ) {
+            if(election.getElectionID() == Integer.parseInt(electionID.getText())){
+                deleteFlag = false;
+                successfulAlert();
+                deleteElection();
+                back(event);
             }
-            if (insertFlag){
-                insertElection(new Election(Integer.parseInt(electionid.getText()), topic.getText(), title.getText()));
-                this.actionEvent = event;
-                loadScene("AdminPanel");
-            }
+        }
+        if (deleteFlag){
+            errorAlert();
         }
     }
+    private int deleteElection(){
+        Session sesn = factory.openSession();
+        Transaction tx;
+        int result = 0;
+        try {
+            tx = sesn.beginTransaction();
+            result = sesn.createQuery("delete Election where electionid = '" +
+                    Integer.parseInt(electionID.getText()) + "'" ).executeUpdate();
+            tx.commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            sesn.close();
+        }
+        return result;
+    }
+
     @FXML
     public void logout(ActionEvent event) {
         this.actionEvent = event;
@@ -103,30 +96,10 @@ public class AddElectionController implements Initializable {
             e.printStackTrace();
         }
     }
-    private int insertElection(Election election)
-    {
-        Session session = factory.openSession();
-        Transaction tx = null;
-        Integer userIdSaved = null;
-        try {
-            tx = session.beginTransaction();
-            userIdSaved = (Integer) session.save(election);
-            tx.commit();
-        } catch(HibernateException ex) {
-            if(tx != null)
-                tx.rollback();
-            ex.printStackTrace();
-        } finally {
-            session.close();
-        }
-
-        return userIdSaved;
-
-    }
     private List<Election> getElections() {
         Session sesn = factory.openSession();
         Transaction tx = null;
-        List<Election> elections = new ArrayList<>();
+        List<Election> elections = new ArrayList<Election>();
         try {
             tx = sesn.beginTransaction();
             elections = (List) sesn.createQuery("from Election").list();
@@ -144,6 +117,13 @@ public class AddElectionController implements Initializable {
         alert.setTitle("Error");
         alert.setHeaderText("Database Error");
         alert.setContentText("There is an election with same id or check your database connections");
+        alert.showAndWait();
+    }
+    private void successfulAlert() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("INFORMATION");
+        alert.setHeaderText("Deleted");
+        alert.setContentText("Election deleted successfully");
         alert.showAndWait();
     }
 }

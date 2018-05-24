@@ -17,8 +17,8 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+import sample.AFewWorks.CandidatePanelController;
 import sample.Model.Candidate;
-
 
 import java.io.IOException;
 import java.net.URL;
@@ -26,8 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class DeleteCandidateController implements Initializable {
-
+public class SelectEditableCandidateController implements Initializable {
     private static SessionFactory factory;
     private static ServiceRegistry serviceRegistry;
     private ActionEvent actionEvent;
@@ -44,37 +43,39 @@ public class DeleteCandidateController implements Initializable {
         factory = config.buildSessionFactory(serviceRegistry);
     }
     @FXML
-    public void delete(ActionEvent event){
-        boolean deleteFlag = true;
+    public void edit(ActionEvent event){
+        boolean editFlag = true;
         List<Candidate> candidates = this.getCandidates();
+        FXMLLoader loader = null;
+        Parent root = null;
 
         for (Candidate candidate : candidates ) {
             if(candidate.getIdentityNumber() == Integer.parseInt(candidateID.getText())){
-                deleteFlag = false;
-                successfulAlert();
+                editFlag = false;
+                actionEvent = event;
                 deleteCandidate();
-                back(event);
             }
         }
-        if (deleteFlag){
+        if (editFlag){
             errorAlert();
         }
     }
-    private int deleteCandidate(){
-        Session sesn = factory.openSession();
-        Transaction tx;
-        int result = 0;
+    private void deleteCandidate(){
+        FXMLLoader loader = null;
+        Parent root = null;
         try {
-            tx = sesn.beginTransaction();
-            result = sesn.createQuery("delete Candidate where identityNumber = '" +
-                    Integer.parseInt(candidateID.getText()) + "'" ).executeUpdate();
-            tx.commit();
-        } catch (HibernateException e) {
+            loader = new FXMLLoader(getClass().getClassLoader().getResource("fx/EditCandidate.fxml"));
+            root = loader.load();
+            EditCandidateController editCandidateController = loader.getController();
+            editCandidateController.setCandidateIdFromOutside(Integer.parseInt(candidateID.getText()));
+            editCandidateController.loadCandidate();
+            Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
+            primaryStage.setTitle("EditCandidate");
+            primaryStage.setScene(new Scene(root, 800,600));
+            primaryStage.show();
+        }catch (IOException e){
             e.printStackTrace();
-        } finally {
-            sesn.close();
         }
-        return result;
     }
 
 
@@ -128,12 +129,4 @@ public class DeleteCandidateController implements Initializable {
         alert.setContentText("There is an candidate with same id or check your database connections");
         alert.showAndWait();
     }
-    private void successfulAlert() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("INFORMATION");
-        alert.setHeaderText("Deleted");
-        alert.setContentText("Candidate deleted successfully");
-        alert.showAndWait();
-    }
-
 }
