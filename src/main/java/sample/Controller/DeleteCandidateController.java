@@ -84,6 +84,7 @@ public class DeleteCandidateController implements Initializable {
         boolean emptyFlag = true;
         if(candidateID.getText() == null || candidateID.getText().trim().isEmpty()){
             emptyFlag = false;
+            candidateID.getStyleClass().remove("best");
             candidateID.getStyleClass().add("error");
         }else {
             candidateID.getStyleClass().add("best");

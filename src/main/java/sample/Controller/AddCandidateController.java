@@ -1,5 +1,6 @@
 package sample.Controller;
 
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,6 +23,8 @@ import org.hibernate.service.ServiceRegistry;
 import sample.Model.Candidate;
 import sample.Model.Election;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -62,6 +65,7 @@ public class AddCandidateController implements Initializable {
 
     @FXML
     private ImageView imageView;
+
     @FXML
     private Button submitButton;
 
@@ -82,6 +86,7 @@ public class AddCandidateController implements Initializable {
         List<Candidate> candidates = this.getCandidates();
 
         if(name.getText() == null || name.getText().trim().isEmpty()){
+            name.getStyleClass().remove("best");
             name.getStyleClass().add("error");
             emptyFlag = false;
         }else {
@@ -89,54 +94,63 @@ public class AddCandidateController implements Initializable {
         }
         if(surname.getText() == null || surname.getText().trim().isEmpty()){
             emptyFlag = false;
+            surname.getStyleClass().remove("best");
             surname.getStyleClass().add("error");
         }else {
             surname.getStyleClass().add("best");
         }
         if(password.getText() == null || password.getText().trim().isEmpty()){
             emptyFlag = false;
+            password.getStyleClass().remove("best");
             password.getStyleClass().add("error");
         }else {
             password.getStyleClass().add("best");
         }
         if(street.getText() == null || street.getText().trim().isEmpty()){
             emptyFlag = false;
+            street.getStyleClass().remove("best");
             street.getStyleClass().add("error");
         }else {
             street.getStyleClass().add("best");
         }
         if(number.getText() == null || number.getText().trim().isEmpty()){
             emptyFlag = false;
+            number.getStyleClass().remove("best");
             number.getStyleClass().add("error");
         }else {
             number.getStyleClass().add("best");
         }
         if(town.getText() == null || town.getText().trim().isEmpty()){
             emptyFlag = false;
+            town.getStyleClass().remove("best");
             town.getStyleClass().add("error");
         }else {
             town.getStyleClass().add("best");
         }
         if(city.getText() == null || city.getText().trim().isEmpty()){
             emptyFlag = false;
+            city.getStyleClass().remove("best");
             city.getStyleClass().add("error");
         }else {
             city.getStyleClass().add("best");
         }
         if(description.getText() == null || description.getText().trim().isEmpty()){
             emptyFlag = false;
+            description.getStyleClass().remove("best");
             description.getStyleClass().add("error");
         }else {
             description.getStyleClass().add("best");
         }
         if(identityNumber.getText() == null || identityNumber.getText().trim().isEmpty()){
             emptyFlag = false;
+            identityNumber.getStyleClass().remove("best");
             identityNumber.getStyleClass().add("error");
         }else {
             identityNumber.getStyleClass().add("best");
         }
         if(electionid.getText() == null || electionid.getText().trim().isEmpty()){
             emptyFlag = false;
+            electionid.getStyleClass().remove("best");
             electionid.getStyleClass().add("error");
         }else {
             electionid.getStyleClass().add("best");
@@ -172,7 +186,7 @@ public class AddCandidateController implements Initializable {
                 try {
                     int id = Integer.parseInt(electionid.getText());
                     for (Election election: elections ) {
-                        if(election.getElectionID() == id){
+                        if(election.getElectionID() == id && election.isVotable()){
                             electionIdControlFlag = true;
                             break;
                         }
@@ -276,6 +290,15 @@ public class AddCandidateController implements Initializable {
                 new FileChooser.ExtensionFilter("All Files", "*.*"));
 
         selectedFile = fileChooser.showOpenDialog(new Stage());
+        try {
+            BufferedImage bufferedImage;
+            bufferedImage = ImageIO.read(selectedFile);
+            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+            imageView.setImage(image);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+
     }
     private void errorAlert(String errorString) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

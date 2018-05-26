@@ -1,4 +1,4 @@
-package sample.Controller;
+package sample.AFewWorks;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -79,6 +79,7 @@ public class DeleteVoterController implements Initializable {
         boolean emptyFlag = true;
         if(voterID.getText() == null || voterID.getText().trim().isEmpty()){
             emptyFlag = false;
+            voterID.getStyleClass().remove("best");
             voterID.getStyleClass().add("error");
         }else {
             voterID.getStyleClass().add("best");

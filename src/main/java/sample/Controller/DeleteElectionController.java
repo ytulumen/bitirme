@@ -75,6 +75,7 @@ public class DeleteElectionController implements Initializable {
         boolean emptyFlag = true;
         if(electionID.getText() == null || electionID.getText().trim().isEmpty()){
             emptyFlag = false;
+            electionID.getStyleClass().remove("best");
             electionID.getStyleClass().add("error");
         }else {
             electionID.getStyleClass().add("best");

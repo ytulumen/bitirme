@@ -57,18 +57,21 @@ public class AddElectionController implements Initializable {
 
         if(topic.getText() == null || topic.getText().trim().isEmpty()){
             emptyFlag = false;
+            topic.getStyleClass().remove("best");
             topic.getStyleClass().add("error");
         }else {
             topic.getStyleClass().add("best");
         }
         if(title.getText() == null || title.getText().trim().isEmpty()){
             emptyFlag = false;
+            title.getStyleClass().remove("best");
             title.getStyleClass().add("error");
         }else {
             title.getStyleClass().add("best");
         }
         if(electionid.getText() == null || electionid.getText().trim().isEmpty()) {
             emptyFlag = false;
+            electionid.getStyleClass().remove("best");
             electionid.getStyleClass().add("error");
         }else {
             electionid.getStyleClass().add("best");

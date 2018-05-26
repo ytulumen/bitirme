@@ -1,5 +1,7 @@
-package sample.NotDone;
+package sample.Controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +10,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -17,7 +22,6 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import sample.AFewWorks.CandidatePanelController;
 import sample.Model.Candidate;
 
 import java.io.IOException;
@@ -34,6 +38,32 @@ public class SelectEditableCandidateController implements Initializable {
     @FXML
     private TextField candidateID;
 
+
+    @FXML
+    private TableView<Candidate> candidateTable;
+
+    @FXML
+    private TableColumn<Candidate, Integer> idColumn;
+
+    @FXML
+    private TableColumn<Candidate, String> nameColumn;
+
+    @FXML
+    private TableColumn<Candidate, String> surnameColumn;
+
+    @FXML
+    private TableColumn<Candidate, String> addressColumn;
+
+    @FXML
+    private TableColumn<Candidate, String> descriptionColumn;
+
+    @FXML
+    private TableColumn<Candidate, Integer> electionIdColumn;
+
+    private ObservableList<Candidate> observableCandidate = FXCollections.observableArrayList();
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         Configuration config = new Configuration();
@@ -41,6 +71,16 @@ public class SelectEditableCandidateController implements Initializable {
         config.addAnnotatedClass(Candidate.class);
         serviceRegistry = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();
         factory = config.buildSessionFactory(serviceRegistry);
+
+        idColumn.setCellValueFactory(new PropertyValueFactory<Candidate, Integer>("identityNumber"));
+        nameColumn.setCellValueFactory(new PropertyValueFactory<Candidate, String>("name"));
+        surnameColumn.setCellValueFactory(new PropertyValueFactory<Candidate, String>("surname"));
+        addressColumn.setCellValueFactory(new PropertyValueFactory<Candidate, String>("street"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<Candidate, String>("description"));
+        electionIdColumn.setCellValueFactory(new PropertyValueFactory<Candidate, Integer>("electionid"));
+
+        observableCandidate.addAll(getCandidates());
+        candidateTable.setItems(observableCandidate);
     }
     @FXML
     public void edit(ActionEvent event){
@@ -53,21 +93,22 @@ public class SelectEditableCandidateController implements Initializable {
             if(candidate.getIdentityNumber() == Integer.parseInt(candidateID.getText())){
                 editFlag = false;
                 actionEvent = event;
-                deleteCandidate();
+                editCandidate(candidate.getId());
+                break;
             }
         }
         if (editFlag){
             errorAlert();
         }
     }
-    private void deleteCandidate(){
+    private void editCandidate(int id){
         FXMLLoader loader = null;
         Parent root = null;
         try {
             loader = new FXMLLoader(getClass().getClassLoader().getResource("fx/EditCandidate.fxml"));
             root = loader.load();
             EditCandidateController editCandidateController = loader.getController();
-            editCandidateController.setCandidateIdFromOutside(Integer.parseInt(candidateID.getText()));
+            editCandidateController.setCandidateIdFromOutside(id);
             editCandidateController.loadCandidate();
             Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             primaryStage.setTitle("EditCandidate");

@@ -67,4 +67,12 @@ public class Election {
     public void setTopic(String topic) {
         this.topic = topic;
     }
+
+    public boolean isVotable() {
+        return isVotable;
+    }
+
+    public void setVotable(boolean votable) {
+        isVotable = votable;
+    }
 }

@@ -8,19 +8,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AFewWorks.CandidatePanelController">
+<AnchorPane prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.CandidatePanelController">
    <children>
       <Button layoutX="33.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
       <ImageView fitHeight="79.0" fitWidth="149.0" layoutX="348.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true" />
-      <TextArea fx:id="description" layoutX="99.0" layoutY="200.0" prefHeight="131.0" prefWidth="149.0" promptText="Description" />
+      <TextArea fx:id="description" layoutX="99.0" layoutY="200.0" prefHeight="131.0" prefWidth="149.0" promptText="Description" stylesheets="@../css/gui.css" />
       <Button layoutX="455.0" layoutY="435.0" mnemonicParsing="false" onAction="#submitCandidate" text="Submit" />
-      <TextField fx:id="city" layoutX="347.0" layoutY="201.0" promptText="City" />
-      <TextField fx:id="town" layoutX="347.0" layoutY="158.0" promptText="Town" />
-      <TextField fx:id="number" layoutX="347.0" layoutY="117.0" promptText="Number" />
-      <TextField fx:id="street" layoutX="347.0" layoutY="72.0" promptText="Street" />
-      <PasswordField fx:id="password" layoutX="99.0" layoutY="154.0" promptText="Password" />
-      <TextField fx:id="surname" layoutX="99.0" layoutY="113.0" promptText="Surname" />
-      <TextField fx:id="name" layoutX="99.0" layoutY="72.0" promptText="Name" />
+      <PasswordField fx:id="password" layoutX="99.0" layoutY="154.0" promptText="Password" stylesheets="@../css/gui.css" />
       <Label layoutX="234.0" layoutY="34.0" prefHeight="17.0" prefWidth="149.0" text="EDIT CANDIDATE" />
       <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" layoutX="347.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true" />
       <Button layoutX="370.0" layoutY="400.0" mnemonicParsing="false" onAction="#loadImage" text="Change Picture" />

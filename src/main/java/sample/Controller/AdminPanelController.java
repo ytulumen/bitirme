@@ -79,7 +79,7 @@ public class AdminPanelController implements Initializable {
     @FXML
     public void editElection(ActionEvent event){
         this.actionEvent = event;
-        loadScene("EditElection");
+        loadScene("SelectEditableElection");
     }
     @FXML
     public void editCandidate(ActionEvent event){
@@ -89,7 +89,7 @@ public class AdminPanelController implements Initializable {
     @FXML
     public void editVoter(ActionEvent event){
         this.actionEvent = event;
-        loadScene("EditVoter");
+        loadScene("SelectEditableVoter");
     }
 
     private void loadScene(String page) {

@@ -1,4 +1,4 @@
-package sample.NotDone;
+package sample.Controller;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -26,8 +27,7 @@ import sample.Model.Candidate;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -37,9 +37,10 @@ public class EditCandidateController implements Initializable {
     private static SessionFactory factory;
     private static ServiceRegistry serviceRegistry;
     private int candidateId;
-    private Candidate candidate;
     private ActionEvent actionEvent;
+    private Candidate candidate;
 
+    @FXML
     private long identityNumber;  //because id not changeable
 
     @FXML
@@ -90,6 +91,14 @@ public class EditCandidateController implements Initializable {
                 new FileChooser.ExtensionFilter("All Files", "*.*"));
 
         selectedFile = fileChooser.showOpenDialog(new Stage());
+        try {
+            BufferedImage bufferedImage;
+            bufferedImage = ImageIO.read(selectedFile);
+            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+            imageView.setImage(image);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
     @FXML
     public void logout(ActionEvent event) {
@@ -103,38 +112,72 @@ public class EditCandidateController implements Initializable {
     }
     @FXML
     public void submitCandidate(ActionEvent event) {
+        boolean emptyFlag = true;
+
         if(name.getText() == null || name.getText().trim().isEmpty()){
-            name.setText(candidate.getName());
+            name.getStyleClass().remove("best");
+            name.getStyleClass().add("error");
+            emptyFlag = false;
+        }else {
+            name.getStyleClass().add("best");
         }
         if(surname.getText() == null || surname.getText().trim().isEmpty()){
-            surname.setText(candidate.getSurname());
+            emptyFlag = false;
+            surname.getStyleClass().remove("best");
+            surname.getStyleClass().add("error");
+        }else {
+            surname.getStyleClass().add("best");
         }
         if(password.getText() == null || password.getText().trim().isEmpty()){
-            password.setText(candidate.getPassword());
+            emptyFlag = false;
+            password.getStyleClass().remove("best");
+            password.getStyleClass().add("error");
+        }else {
+            password.getStyleClass().add("best");
         }
         if(street.getText() == null || street.getText().trim().isEmpty()){
-            street.setText(candidate.getStreet());
+            emptyFlag = false;
+            street.getStyleClass().remove("best");
+            street.getStyleClass().add("error");
+        }else {
+            street.getStyleClass().add("best");
         }
         if(number.getText() == null || number.getText().trim().isEmpty()){
-            number.setText(candidate.getNumber());
+            emptyFlag = false;
+            number.getStyleClass().remove("best");
+            number.getStyleClass().add("error");
+        }else {
+            number.getStyleClass().add("best");
         }
         if(town.getText() == null || town.getText().trim().isEmpty()){
-            town.setText(candidate.getTown());
+            emptyFlag = false;
+            town.getStyleClass().remove("best");
+            town.getStyleClass().add("error");
+        }else {
+            town.getStyleClass().add("best");
         }
         if(city.getText() == null || city.getText().trim().isEmpty()){
-            city.setText(candidate.getCity());
+            emptyFlag = false;
+            city.getStyleClass().remove("best");
+            city.getStyleClass().add("error");
+        }else {
+            city.getStyleClass().add("best");
         }
         if(description.getText() == null || description.getText().trim().isEmpty()){
-            description.setText(candidate.getDescription());
+            emptyFlag = false;
+            description.getStyleClass().remove("best");
+            description.getStyleClass().add("error");
+        }else {
+            description.getStyleClass().add("best");
         }
-        if(selectedFile == null || selectedFile.getAbsolutePath().trim().isEmpty()){
-            selectedFile = new File(candidate.getImagePath());
+        if (emptyFlag){
+            updateCandidate(new Candidate(name.getText(), surname.getText(), candidate.getIdentityNumber(),
+                    password.getText(), street.getText(), number.getText(), town.getText(), city.getText(),
+                    description.getText(), selectedFile.getAbsolutePath(), 4, 0));
+            successfulAlert();
+            actionEvent = event;
+            loadScene("AdminPanel");
         }
-
-
-        updateCandidate(new Candidate(name.getText(), surname.getText(), identityNumber,
-                password.getText(), street.getText(), number.getText(), town.getText(), city.getText(), description.getText(),
-                selectedFile.getAbsolutePath(), candidate.getElectionid(), candidate.getVotecounter()));
     }
 
     private Candidate getCandidate() {
@@ -143,7 +186,7 @@ public class EditCandidateController implements Initializable {
         List<Candidate> candidates = new ArrayList<>();
         try {
             tx = sesn.beginTransaction();
-            candidates = (List) sesn.createQuery("from Candidate where identityNumber = '" + candidateId + "'").list();
+            candidates = (List) sesn.createQuery("from Candidate where id = '" + candidateId + "'").list();
             tx.commit();
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -166,6 +209,7 @@ public class EditCandidateController implements Initializable {
         town.setText(candidate.getTown());
         city.setText(candidate.getCity());
         description.setText(candidate.getDescription());
+        selectedFile = new File(candidate.getImagePath());
 
         try {
             BufferedImage bufferedImage;
@@ -207,7 +251,7 @@ public class EditCandidateController implements Initializable {
                     ", city = '" + candidate.getCity() + "'" +
                     ", description = '" + candidate.getDescription() + "'" +
                     ", imagePath = '" + getPath(candidate.getImagePath()) + "'" +
-                    " where identityNumber = '" + candidateId + "'").executeUpdate();
+                    " where id = '" + candidateId + "'").executeUpdate();
             tx.commit();
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -219,5 +263,19 @@ public class EditCandidateController implements Initializable {
     private String getPath(String path){
         String ret = path.replace(new StringBuilder("\\"), new StringBuilder("\\\\"));
         return ret;
+    }
+    private void errorAlert(String errorString) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Database Error");
+        alert.setContentText(errorString);
+        alert.showAndWait();
+    }
+    private void successfulAlert() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("INFORMATION");
+        alert.setHeaderText("Edited");
+        alert.setContentText("Candidate edited successfully");
+        alert.showAndWait();
     }
 }

@@ -19,7 +19,6 @@ import org.hibernate.service.ServiceRegistry;
 import sample.AFewWorks.VoterPanelController;
 import sample.Model.Candidate;
 import sample.Model.Voter;
-import sample.AFewWorks.CandidatePanelController;
 
 import java.io.IOException;
 import java.net.URL;

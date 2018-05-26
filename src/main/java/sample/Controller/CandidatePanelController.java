@@ -1,4 +1,4 @@
-package sample.AFewWorks;
+package sample.Controller;
 
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -39,30 +40,10 @@ public class CandidatePanelController implements Initializable {
     private static ServiceRegistry serviceRegistry;
     private int candidateId;
     private ActionEvent actionEvent;
-
-    @FXML
-    private long identityNumber;  //because id not changeable
-
-    @FXML
-    private TextField name;
-
-    @FXML
-    private TextField surname;
+    private Candidate candidate;
 
     @FXML
     private PasswordField password;
-
-    @FXML
-    private TextField street;
-
-    @FXML
-    private TextField number;
-
-    @FXML
-    private TextField town;
-
-    @FXML
-    private TextField city;
 
     @FXML
     private TextArea description;
@@ -91,6 +72,14 @@ public class CandidatePanelController implements Initializable {
                 new FileChooser.ExtensionFilter("All Files", "*.*"));
 
         selectedFile = fileChooser.showOpenDialog(new Stage());
+        try {
+            BufferedImage bufferedImage;
+            bufferedImage = ImageIO.read(selectedFile);
+            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+            imageView.setImage(image);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
     @FXML
     public void logout(ActionEvent event) {
@@ -99,9 +88,28 @@ public class CandidatePanelController implements Initializable {
     }
     @FXML
     public void submitCandidate(ActionEvent event) {
-        updateCandidate(new Candidate(name.getText(), surname.getText(), identityNumber,
-                password.getText(), street.getText(), number.getText(), town.getText(), city.getText(), description.getText(),
-                selectedFile.getAbsolutePath(), 4, 0));
+        boolean emptyFlag = true;
+
+
+        if(password.getText() == null || password.getText().trim().isEmpty()){
+            emptyFlag = false;
+            password.getStyleClass().remove("best");
+            password.getStyleClass().add("error");
+        }else {
+            password.getStyleClass().add("best");
+        }
+        if(description.getText() == null || description.getText().trim().isEmpty()){
+            emptyFlag = false;
+            description.getStyleClass().remove("best");
+            description.getStyleClass().add("error");
+        }else {
+            description.getStyleClass().add("best");
+        }
+        if (emptyFlag){
+            updateCandidate(new Candidate(candidate.getName(), candidate.getSurname(), candidate.getIdentityNumber(),
+                    password.getText(), candidate.getStreet(), candidate.getNumber(), candidate.getTown(), candidate.getCity(),
+                    description.getText(), selectedFile.getAbsolutePath(), 4, 0));
+        }
     }
 
     private Candidate getCandidate() {
@@ -123,16 +131,10 @@ public class CandidatePanelController implements Initializable {
         this.candidateId = id;
     }
     public void loadCandidate(){
-        Candidate candidate = getCandidate();
-        identityNumber = candidate.getIdentityNumber();
-        name.setText(candidate.getName());
-        surname.setText(candidate.getSurname());
+        candidate = getCandidate();
         password.setText(candidate.getPassword());
-        street.setText(candidate.getStreet());
-        number.setText(candidate.getNumber());
-        town.setText(candidate.getTown());
-        city.setText(candidate.getCity());
         description.setText(candidate.getDescription());
+        selectedFile = new File(candidate.getImagePath());
 
         try {
             BufferedImage bufferedImage;
@@ -186,5 +188,12 @@ public class CandidatePanelController implements Initializable {
     private String getPath(String path){
         String ret = path.replace(new StringBuilder("\\"), new StringBuilder("\\\\"));
         return ret;
+    }
+    private void errorAlert(String errorString) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Database Error");
+        alert.setContentText(errorString);
+        alert.showAndWait();
     }
 }
