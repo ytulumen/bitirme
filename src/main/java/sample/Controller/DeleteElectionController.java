@@ -1,5 +1,7 @@
 package sample.Controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,7 +10,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -17,6 +22,7 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+import sample.Model.Candidate;
 import sample.Model.Election;
 
 import java.io.IOException;
@@ -33,29 +39,75 @@ public class DeleteElectionController implements Initializable {
     @FXML
     private TextField electionID;
 
+    @FXML
+    private TableView<Election> electionTable;
+
+    @FXML
+    private TableColumn<Election, Integer> idColumn;
+
+    @FXML
+    private TableColumn<Election, String> titleColumn;
+
+    @FXML
+    private TableColumn<Election, String> descriptionColumn;
+
+    private ObservableList<Election> observableElections = FXCollections.observableArrayList();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+
         Configuration config = new Configuration();
         config.configure();
         config.addAnnotatedClass(Election.class);
         serviceRegistry = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();
         factory = config.buildSessionFactory(serviceRegistry);
+
+        idColumn.setCellValueFactory(new PropertyValueFactory<Election, Integer>("electionID"));
+        titleColumn.setCellValueFactory(new PropertyValueFactory<Election, String>("topic"));
+        descriptionColumn.setCellValueFactory(new PropertyValueFactory<Election, String>("title"));
+        observableElections.addAll(getElections());
+        electionTable.setItems(observableElections);
     }
     @FXML
     public void delete(ActionEvent event){
-        boolean deleteFlag = true;
-        List<Election> elections = this.getElections();
 
-        for (Election election : elections ) {
-            if(election.getElectionID() == Integer.parseInt(electionID.getText())){
-                deleteFlag = false;
-                successfulAlert();
-                deleteElection();
-                back(event);
+        boolean emptyFlag = true;
+        if(electionID.getText() == null || electionID.getText().trim().isEmpty()){
+            emptyFlag = false;
+            electionID.getStyleClass().add("error");
+        }else {
+            electionID.getStyleClass().add("best");
+        }
+        if (emptyFlag){
+            boolean deleteFlag = true;
+            try {
+                List<Election> elections = this.getElections();
+
+                for (Election election : elections ) {
+                    if(election.getElectionID() == Integer.parseInt(electionID.getText())){
+                        deleteFlag = false;
+                        successfulAlert();
+                        deleteElection();
+                        back(event);
+                    }
+                }
+                if (deleteFlag){
+                    errorAlert("There is an candidate with " + electionID.getText()
+                            + " id or check your database connections");
+                    electionID.getStyleClass().remove("best");
+                    electionID.getStyleClass().add("error");
+                }
+            }catch (NumberFormatException e){
+                e.printStackTrace();
+                electionID.getStyleClass().remove("best");
+                electionID.getStyleClass().add("error");
+                errorAlert("Invalid candidate id " + electionID.getText()
+                        + " or check your database connections");
             }
         }
-        if (deleteFlag){
-            errorAlert();
+        else {
+            errorAlert("Cannot be null");
         }
     }
     private int deleteElection(){
@@ -124,6 +176,13 @@ public class DeleteElectionController implements Initializable {
         alert.setTitle("INFORMATION");
         alert.setHeaderText("Deleted");
         alert.setContentText("Election deleted successfully");
+        alert.showAndWait();
+    }
+    private void errorAlert(String errorString) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Database Error");
+        alert.setContentText(errorString);
         alert.showAndWait();
     }
 }

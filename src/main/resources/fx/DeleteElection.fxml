@@ -10,7 +10,14 @@
    <children>
       <Button layoutX="64.0" layoutY="62.0" mnemonicParsing="false" onAction="#back" text="Back" />
       <Button layoutX="482.0" layoutY="336.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
-      <TextField fx:id="electionID" layoutX="238.0" layoutY="180.0" promptText="Election ID" />
-      <Button layoutX="361.0" layoutY="244.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
+      <TextField fx:id="electionID" layoutX="64.0" layoutY="298.0" promptText="Election ID" stylesheets="@../css/gui.css" />
+      <Button layoutX="236.0" layoutY="298.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
+      <TableView fx:id="electionTable" layoutX="117.0" layoutY="37.0" prefHeight="246.0" prefWidth="392.0">
+         <columns>
+            <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
+            <TableColumn fx:id="titleColumn" prefWidth="75.0" text="Title" />
+            <TableColumn fx:id="descriptionColumn" prefWidth="241.0" text="Description" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

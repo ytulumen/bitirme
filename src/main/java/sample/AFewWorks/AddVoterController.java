@@ -81,48 +81,75 @@ public class AddVoterController implements Initializable {
         if(name.getText() == null || name.getText().trim().isEmpty()){
             name.getStyleClass().add("error");
             emptyFlag = false;
+        }else {
+            name.getStyleClass().add("best");
         }
         if(surname.getText() == null || surname.getText().trim().isEmpty()){
             emptyFlag = false;
             surname.getStyleClass().add("error");
+        }else {
+            surname.getStyleClass().add("best");
         }
         if(password.getText() == null || password.getText().trim().isEmpty()){
             emptyFlag = false;
             password.getStyleClass().add("error");
+        }else {
+            password.getStyleClass().add("best");
         }
         if(street.getText() == null || street.getText().trim().isEmpty()){
             emptyFlag = false;
             street.getStyleClass().add("error");
+        }else {
+            street.getStyleClass().add("best");
         }
         if(number.getText() == null || number.getText().trim().isEmpty()){
             emptyFlag = false;
             number.getStyleClass().add("error");
+        }else {
+            number.getStyleClass().add("best");
         }
         if(town.getText() == null || town.getText().trim().isEmpty()){
             emptyFlag = false;
             town.getStyleClass().add("error");
+        }else {
+            town.getStyleClass().add("best");
         }
         if(city.getText() == null || city.getText().trim().isEmpty()){
             emptyFlag = false;
             city.getStyleClass().add("error");
+        }else {
+            city.getStyleClass().add("best");
         }
         if(identityNumber.getText() == null || identityNumber.getText().trim().isEmpty()){
             emptyFlag = false;
             identityNumber.getStyleClass().add("error");
+        }else {
+            identityNumber.getStyleClass().add("best");
         }
 
-        if (emptyFlag){
-            for (Voter voter: voters ) {
-                if(voter.getIdentityNumber() == Long.parseLong(identityNumber.getText(), 10)){
-                    errorAlert();
-                    insertFlag = false;
+        if(emptyFlag){
+            try {
+                for (Voter voter: voters ) {
+                    if(voter.getIdentityNumber() == Long.parseLong(identityNumber.getText(), 10)){
+                        errorAlert("There is an voter with " + identityNumber.getText()
+                                + " id or check your database connection");
+                        insertFlag = false;
+                        identityNumber.getStyleClass().remove("best");
+                        identityNumber.getStyleClass().add("error");
+                        break;
+                    }
                 }
-            }
-            if (insertFlag){
-                insertVoter(new Voter(name.getText(), surname.getText(), Long.parseLong(identityNumber.getText(), 10),
-                        password.getText(), street.getText(), number.getText(), town.getText(), city.getText()));
-                actionEvent = event;
-                loadScene("AdminPanel");
+                if (insertFlag){
+                    insertVoter(new Voter(name.getText(), surname.getText(), Long.parseLong(identityNumber.getText(), 10),
+                            password.getText(), street.getText(), number.getText(), town.getText(), city.getText()));
+                    actionEvent = event;
+                    loadScene("AdminPanel");
+                }
+            }catch (NumberFormatException e){
+                e.printStackTrace();
+                errorAlert("Invalid voter id " + identityNumber.getText());
+                identityNumber.getStyleClass().remove("best");
+                identityNumber.getStyleClass().add("error");
             }
         }
     }
@@ -182,11 +209,11 @@ public class AddVoterController implements Initializable {
 
         return voters;
     }
-    private void errorAlert() {
+    private void errorAlert(String errorString) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText("Database Error");
-        alert.setContentText("There is an election with same id or check your database connections");
+        alert.setContentText(errorString);
         alert.showAndWait();
     }
 }

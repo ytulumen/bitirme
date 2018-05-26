@@ -58,27 +58,44 @@ public class AddElectionController implements Initializable {
         if(topic.getText() == null || topic.getText().trim().isEmpty()){
             emptyFlag = false;
             topic.getStyleClass().add("error");
+        }else {
+            topic.getStyleClass().add("best");
         }
         if(title.getText() == null || title.getText().trim().isEmpty()){
             emptyFlag = false;
             title.getStyleClass().add("error");
+        }else {
+            title.getStyleClass().add("best");
         }
         if(electionid.getText() == null || electionid.getText().trim().isEmpty()) {
             emptyFlag = false;
             electionid.getStyleClass().add("error");
+        }else {
+            electionid.getStyleClass().add("best");
         }
 
         if (emptyFlag){
-            for (Election election: elections ) {
-                if(election.getElectionID() == Integer.parseInt(electionid.getText())){
-                    errorAlert();
-                    insertFlag = false;
+            try {
+                for (Election election: elections ) {
+                    if(election.getElectionID() == Integer.parseInt(electionid.getText())){
+                        errorAlert("There is an election with " + electionid.getText());
+                        insertFlag = false;
+                        electionid.getStyleClass().remove("best");
+                        electionid.getStyleClass().add("error");
+                        break;
+                    }
                 }
-            }
-            if (insertFlag){
-                insertElection(new Election(Integer.parseInt(electionid.getText()), topic.getText(), title.getText()));
-                this.actionEvent = event;
-                loadScene("AdminPanel");
+                if (insertFlag){
+                    insertElection(new Election(Integer.parseInt(electionid.getText()), topic.getText(), title.getText(), true));
+                    this.actionEvent = event;
+                    loadScene("AdminPanel");
+                }
+            }catch (NumberFormatException e){
+                e.printStackTrace();
+                errorAlert("Invalid election id " + electionid.getText()
+                            + "or check your database connections");
+                electionid.getStyleClass().remove("best");
+                electionid.getStyleClass().add("error");
             }
         }
     }
@@ -139,11 +156,11 @@ public class AddElectionController implements Initializable {
 
         return elections;
     }
-    private void errorAlert() {
+    private void errorAlert(String errorString) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText("Database Error");
-        alert.setContentText("There is an election with same id or check your database connections");
+        alert.setContentText(errorString);
         alert.showAndWait();
     }
 }

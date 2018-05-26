@@ -23,13 +23,17 @@ public class Election {
     @Column(name = "title")
     private String title;
 
+    @Column(name = "isVotable")
+    private boolean isVotable;
+
     public Election() {
     }
 
-    public Election(int electionID, String topic, String title) {
+    public Election(int electionID, String topic, String title, boolean isVotable) {
         this.electionID = electionID;
         this.topic = topic;
         this.title = title;
+        this.isVotable = isVotable;
     }
 
     public String getTitle() {
