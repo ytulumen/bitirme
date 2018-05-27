@@ -1,4 +1,4 @@
-package sample.AFewWorks;
+package sample.Controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -23,6 +23,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import sample.Model.Candidate;
+import sample.Model.FingerPrintSensor;
 import sample.Model.Voter;
 
 import java.io.IOException;
@@ -30,6 +31,9 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+
+import static java.lang.System.exit;
+import static java.lang.System.setOut;
 
 public class DeleteVoterController implements Initializable {
     private static SessionFactory factory;
@@ -94,6 +98,7 @@ public class DeleteVoterController implements Initializable {
                         deleteFlag = false;
                         successfulAlert();
                         deleteVoter();
+                        deleteFP(voter.getFingerPrintID());
                         back(event);
                     }
                 }
@@ -182,5 +187,16 @@ public class DeleteVoterController implements Initializable {
         alert.setHeaderText("Deleted");
         alert.setContentText("Voter deleted successfully");
         alert.showAndWait();
+    }
+    private void deleteFP(int id){
+        FingerPrintSensor fingerPrintSensor = new FingerPrintSensor("COM3", 9600);
+        fingerPrintSensor.create();
+        if(!fingerPrintSensor.connect()){
+            System.out.println("not connected");
+            exit(1);
+        }
+        fingerPrintSensor.delete(id);
+
+        fingerPrintSensor.disconnect();
     }
 }

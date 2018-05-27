@@ -52,5 +52,6 @@ CREATE Table election(
 	id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
 	electionid INT(6) UNSIGNED ,
 	topic VARCHAR(500) NOT NULL,
-    title VARCHAR(256) NOT NULL
+    title VARCHAR(256) NOT NULL,
+    isVotable TINYINT(1) NOT NULL
 )

@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AFewWorks.DeleteVoterController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.DeleteVoterController">
    <children>
       <Button layoutX="249.0" layoutY="301.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
       <TextField fx:id="voterID" layoutX="54.0" layoutY="301.0" promptText="Voter ID" stylesheets="@../css/gui.css" />

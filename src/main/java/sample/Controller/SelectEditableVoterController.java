@@ -22,7 +22,6 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import sample.AFewWorks.EditVoterController;
 import sample.Model.Voter;
 
 import java.io.IOException;

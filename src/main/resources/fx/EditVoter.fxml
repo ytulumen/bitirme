@@ -6,7 +6,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AFewWorks.EditVoterController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.EditVoterController">
    <children>
       <Button layoutX="495.0" layoutY="28.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
       <Button layoutX="462.0" layoutY="324.0" mnemonicParsing="false" onAction="#submitVoter" text="Submit" />

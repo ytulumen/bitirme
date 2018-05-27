@@ -1,5 +1,6 @@
-package sample.NotDone;
+package sample.Controller;
 
+import arduino.Arduino;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,7 +34,6 @@ public class EditElectionController implements Initializable {
     private ActionEvent actionEvent;
     private Election election;
     private int electionid;
-
 
     @FXML
     private TextArea topic;

@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.*?>
 
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.NotDone.SelectEditableElectionController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.SelectEditableElectionController">
    <children>
       <TableView fx:id="electionTable" layoutX="94.0" layoutY="69.0" prefHeight="246.0" prefWidth="392.0">
          <columns>

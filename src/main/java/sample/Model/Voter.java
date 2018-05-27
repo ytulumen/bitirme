@@ -15,11 +15,10 @@ public class Voter extends Human {
     public Voter() {
     }
 
-    public Voter(String name, String surname, long identityNumber, String password, String street, String number, String town, String city) {
+    public Voter(String name, String surname, long identityNumber, String password, String street, String number, String town, String city, int fingerPrintID) {
         super(name, surname, identityNumber, password, street, number, town, city);
-        setFingerPrintID(1);
+        this.fingerPrintID = fingerPrintID;
     }
-
 
     public int getFingerPrintID() {
         return fingerPrintID;

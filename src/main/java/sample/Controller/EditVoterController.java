@@ -1,5 +1,7 @@
-package sample.AFewWorks;
+package sample.Controller;
 
+import javafx.embed.swing.SwingFXUtils;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -7,12 +9,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import javafx.event.ActionEvent;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -20,18 +23,23 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import sample.Model.Candidate;
 import sample.Model.Voter;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-// TODO: add finger print readerrrr
-public class AddVoterController implements Initializable {
-    @FXML
-    private TextField identityNumber;
+
+public class EditVoterController implements Initializable {
+    private static SessionFactory factory;
+    private static ServiceRegistry serviceRegistry;
+    private int voterId;
+    private ActionEvent actionEvent;
+    private Voter voter;
 
     @FXML
     private TextField name;
@@ -54,29 +62,31 @@ public class AddVoterController implements Initializable {
     @FXML
     private TextField city;
 
-    @FXML
-    private Button submitButton;
-
-    private ActionEvent actionEvent;
-
-    private static SessionFactory factory;
-    private static ServiceRegistry serviceRegistry;
+    private long identityNumber;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        this.submitButton.setDisable(false);
-
         Configuration config = new Configuration();
         config.configure();
         config.addAnnotatedClass(Voter.class);
         serviceRegistry = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();
         factory = config.buildSessionFactory(serviceRegistry);
+
+    }
+    @FXML
+    public void logout(ActionEvent event) {
+        this.actionEvent = event;
+        loadScene("MainPage");
+    }
+    @FXML
+    public void back(ActionEvent event) {
+        this.actionEvent = event;
+        loadScene("AdminPanel");
     }
 
+    @FXML
     public void submitVoter(ActionEvent event) {
-        boolean insertFlag = true, emptyFlag = true;
-        List<Voter> voters = this.getVoters();
+        boolean emptyFlag = true;
 
         if(name.getText() == null || name.getText().trim().isEmpty()){
             name.getStyleClass().remove("best");
@@ -127,49 +137,44 @@ public class AddVoterController implements Initializable {
         }else {
             city.getStyleClass().add("best");
         }
-        if(identityNumber.getText() == null || identityNumber.getText().trim().isEmpty()){
-            emptyFlag = false;
-            identityNumber.getStyleClass().remove("best");
-            identityNumber.getStyleClass().add("error");
-        }else {
-            identityNumber.getStyleClass().add("best");
-        }
-
-        if(emptyFlag){
-            try {
-                for (Voter voter: voters ) {
-                    if(voter.getIdentityNumber() == Long.parseLong(identityNumber.getText(), 10)){
-                        errorAlert("There is an voter with " + identityNumber.getText()
-                                + " id or check your database connection");
-                        insertFlag = false;
-                        identityNumber.getStyleClass().remove("best");
-                        identityNumber.getStyleClass().add("error");
-                        break;
-                    }
-                }
-                if (insertFlag){
-                    insertVoter(new Voter(name.getText(), surname.getText(), Long.parseLong(identityNumber.getText(), 10),
-                            password.getText(), street.getText(), number.getText(), town.getText(), city.getText()));
-                    actionEvent = event;
-                    loadScene("AdminPanel");
-                }
-            }catch (NumberFormatException e){
-                e.printStackTrace();
-                errorAlert("Invalid voter id " + identityNumber.getText());
-                identityNumber.getStyleClass().remove("best");
-                identityNumber.getStyleClass().add("error");
-            }
+        if (emptyFlag){
+            updateVoter(new Voter(name.getText(), surname.getText(), voter.getIdentityNumber(),
+                    password.getText(), street.getText(), number.getText(), town.getText(), city.getText(), voter.getFingerPrintID()));
+            successfulAlert();
+            actionEvent = event;
+            loadScene("AdminPanel");
         }
     }
-    public void back(ActionEvent event) {
-        actionEvent = event;
-        loadScene("AdminPanel");
-    }
-    public void logout(ActionEvent event){
-        actionEvent = event;
-        loadScene("MainPanel");
-    }
 
+    private Voter getVoter() {
+        Session sesn = factory.openSession();
+        Transaction tx;
+        List<Voter> voters = new ArrayList<>();
+        try {
+            tx = sesn.beginTransaction();
+            voters = (List) sesn.createQuery("from Voter where id = '" + voterId + "'").list();
+            tx.commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            sesn.close();
+        }
+        return voters.get(0);
+    }
+    public void setVoterIdFromOutside(int id){
+        this.voterId = id;
+    }
+    public void loadVoter(){
+        voter = getVoter();
+        identityNumber = voter.getIdentityNumber();
+        name.setText(voter.getName());
+        surname.setText(voter.getSurname());
+        password.setText(voter.getPassword());
+        street.setText(voter.getStreet());
+        number.setText(voter.getNumber());
+        town.setText(voter.getTown());
+        city.setText(voter.getCity());
+    }
     private void loadScene(String page) {
         try {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fx/" + page +".fxml"));
@@ -181,47 +186,42 @@ public class AddVoterController implements Initializable {
             e.printStackTrace();
         }
     }
-    private int insertVoter(Voter voter)
-    {
-        Session session = factory.openSession();
-        Transaction tx = null;
-        Integer userIdSaved = null;
-        try {
-            tx = session.beginTransaction();
-            userIdSaved = (Integer) session.save(voter);
-            tx.commit();
-        } catch(HibernateException ex) {
-            if(tx != null)
-                tx.rollback();
-            ex.printStackTrace();
-        } finally {
-            session.close();
-        }
 
-        return userIdSaved;
-
-    }
-    private List<Voter> getVoters() {
+    private int updateVoter(Voter voter) {
         Session sesn = factory.openSession();
-        Transaction tx = null;
-        List<Voter> voters = new ArrayList<Voter>();
+        Transaction tx;
+        int result = 0;
         try {
             tx = sesn.beginTransaction();
-            voters = (List) sesn.createQuery("from Voter").list();
+            result = sesn.createQuery("update Voter" +
+                    " set fname = '" +  voter.getName() + "'" +
+                    ", surname = '" + voter.getSurname() + "'" +
+                    ", pword = '" + voter.getPassword() + "'" +
+                    ", street = '" + voter.getStreet() + "'" +
+                    ", dnumber = '" + voter.getNumber() + "'" +
+                    ", town = '" + voter.getTown() + "'" +
+                    ", city = '" + voter.getCity() + "'" +
+                    " where id = '" + voterId + "'").executeUpdate();
             tx.commit();
         } catch (HibernateException e) {
             e.printStackTrace();
         } finally {
             sesn.close();
         }
-
-        return voters;
+        return result;
     }
     private void errorAlert(String errorString) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Error");
         alert.setHeaderText("Database Error");
         alert.setContentText(errorString);
+        alert.showAndWait();
+    }
+    private void successfulAlert() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("INFORMATION");
+        alert.setHeaderText("Edited");
+        alert.setContentText("Voter edited successfully");
         alert.showAndWait();
     }
 }

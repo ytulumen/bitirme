@@ -1,4 +1,4 @@
-package sample.NotDone;
+package sample.Controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -22,9 +22,8 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+import sample.Controller.EditElectionController;
 import sample.Model.Election;
-import sample.Model.Election;
-import sample.Model.Voter;
 
 import java.io.IOException;
 import java.net.URL;
