@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.SelectEditableCandidateController">
+   <children>
+      <Button layoutX="251.0" layoutY="314.0" mnemonicParsing="false" onAction="#edit" text="Edit" />
+      <TextField fx:id="candidateID" layoutX="65.0" layoutY="314.0" promptText="Candidate ID" />
+      <Button layoutX="472.0" layoutY="326.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
+      <Button layoutX="54.0" layoutY="52.0" mnemonicParsing="false" onAction="#back" text="Back" />
+      <TableView fx:id="candidateTable" layoutX="26.0" layoutY="86.0" prefHeight="200.0" prefWidth="555.0">
+         <columns>
+            <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
+            <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+            <TableColumn fx:id="surnameColumn" prefWidth="75.0" text="Surname" />
+            <TableColumn fx:id="addressColumn" prefWidth="139.0" text="Address" />
+            <TableColumn fx:id="descriptionColumn" text="Description" />
+            <TableColumn fx:id="electionIdColumn" prefWidth="110.0" text="Election ID" />
+         </columns>
+      </TableView>
+   </children>
+</AnchorPane>

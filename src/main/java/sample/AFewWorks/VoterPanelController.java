@@ -71,13 +71,13 @@ public class VoterPanelController implements Initializable {
 
         FXMLLoader loader = null;
         Parent root = null;
-        loader = new FXMLLoader(getClass().getClassLoader().getResource("fx/VoteScreen.fxml"));
+        loader = new FXMLLoader(getClass().getClassLoader().getResource("fx/notdone/VoteScreen.fxml"));
         root = loader.load();
         VoteScreenController voteScreenController = loader.getController();
         voteScreenController.setVariables(election, voter);
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         primaryStage.setTitle("VoteScreen");
-        primaryStage.setScene(new Scene(root, 800,600));
+        primaryStage.setScene(new Scene(root, 750,600));
         primaryStage.show();
     }
 
@@ -119,7 +119,7 @@ public class VoterPanelController implements Initializable {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fx/" + page +".fxml"));
             Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             primaryStage.setTitle(page);
-            primaryStage.setScene(new Scene(root, 800,600));
+            primaryStage.setScene(new Scene(root, 750,600));
             primaryStage.show();
         }catch (IOException e){
             e.printStackTrace();

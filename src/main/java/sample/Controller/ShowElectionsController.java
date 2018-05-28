@@ -23,6 +23,7 @@ import org.hibernate.service.ServiceRegistry;
 import sample.Model.Election;
 import sample.Model.Voter;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -49,6 +50,9 @@ public class ShowElectionsController implements Initializable {
     @FXML
     private TableColumn<Election, String> descriptionColumn;
 
+    @FXML
+    private TableColumn<Election, Boolean> votingColumn;
+
     private ObservableList<Election> observableElections = FXCollections.observableArrayList();
 
 
@@ -57,6 +61,7 @@ public class ShowElectionsController implements Initializable {
         idColumn.setCellValueFactory(new PropertyValueFactory<Election, Integer>("electionID"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<Election, String>("topic"));
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<Election, String>("title"));
+        votingColumn.setCellValueFactory(new PropertyValueFactory<Election, Boolean>("isVotable"));
         observableElections.addAll(getElections());
         electionTable.setItems(observableElections);
     }
@@ -96,7 +101,7 @@ public class ShowElectionsController implements Initializable {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fx/" + page +".fxml"));
             Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             primaryStage.setTitle(page);
-            primaryStage.setScene(new Scene(root, 800,600));
+            primaryStage.setScene(new Scene(root, 750,600));
             primaryStage.show();
         }catch (IOException e){
             e.printStackTrace();

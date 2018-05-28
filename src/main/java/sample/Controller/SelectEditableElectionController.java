@@ -22,7 +22,6 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import sample.Controller.EditElectionController;
 import sample.Model.Election;
 
 import java.io.IOException;
@@ -51,6 +50,9 @@ public class SelectEditableElectionController implements Initializable {
     @FXML
     private TableColumn<Election, String> descriptionColumn;
 
+    @FXML
+    private TableColumn<Election, Boolean> votingColumn;
+
     private ObservableList<Election> observableElections = FXCollections.observableArrayList();
 
 
@@ -65,6 +67,7 @@ public class SelectEditableElectionController implements Initializable {
         idColumn.setCellValueFactory(new PropertyValueFactory<Election, Integer>("electionID"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<Election, String>("topic"));
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<Election, String>("title"));
+        votingColumn.setCellValueFactory(new PropertyValueFactory<Election, Boolean>("isVotable"));
         observableElections.addAll(getElections());
         electionTable.setItems(observableElections);
     }
@@ -91,14 +94,14 @@ public class SelectEditableElectionController implements Initializable {
         FXMLLoader loader = null;
         Parent root = null;
         try {
-            loader = new FXMLLoader(getClass().getClassLoader().getResource("fx/EditElection.fxml"));
+            loader = new FXMLLoader(getClass().getClassLoader().getResource("fx/notdone/EditElection.fxml"));
             root = loader.load();
             EditElectionController editElectionController = loader.getController();
             editElectionController.setElectionIdFromOutside(id);
             editElectionController.loadElection();
             Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             primaryStage.setTitle("EditElection");
-            primaryStage.setScene(new Scene(root, 800,600));
+            primaryStage.setScene(new Scene(root, 750,600));
             primaryStage.show();
         }catch (IOException e){
             e.printStackTrace();
@@ -137,7 +140,7 @@ public class SelectEditableElectionController implements Initializable {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fx/" + page +".fxml"));
             Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             primaryStage.setTitle(page);
-            primaryStage.setScene(new Scene(root, 800,600));
+            primaryStage.setScene(new Scene(root, 750,600));
             primaryStage.show();
         }catch (IOException e){
             e.printStackTrace();

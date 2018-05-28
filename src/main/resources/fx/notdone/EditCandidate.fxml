@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.EditCandidateController">
+   <children>
+      <Label layoutX="244.0" layoutY="44.0" prefHeight="17.0" prefWidth="149.0" text="EDIT CANDIDATE" />
+      <Button layoutX="380.0" layoutY="410.0" mnemonicParsing="false" onAction="#loadImage" text="Change Picture" />
+      <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" layoutX="357.0" layoutY="260.0" pickOnBounds="true" preserveRatio="true" />
+      <TextField fx:id="name" layoutX="109.0" layoutY="82.0" promptText="Name" stylesheets="@../../css/gui.css" />
+      <TextField fx:id="surname" layoutX="109.0" layoutY="123.0" promptText="Surname" stylesheets="@../../css/gui.css" />
+      <PasswordField fx:id="password" layoutX="109.0" layoutY="164.0" promptText="Password" stylesheets="@../../css/gui.css" />
+      <TextField fx:id="street" layoutX="357.0" layoutY="82.0" promptText="Street" stylesheets="@../../css/gui.css" />
+      <TextField fx:id="number" layoutX="357.0" layoutY="127.0" promptText="Number" stylesheets="@../../css/gui.css" />
+      <TextField fx:id="town" layoutX="357.0" layoutY="168.0" promptText="Town" stylesheets="@../../css/gui.css" />
+      <TextField fx:id="city" layoutX="357.0" layoutY="211.0" promptText="City" stylesheets="@../../css/gui.css" />
+      <Button layoutX="465.0" layoutY="445.0" mnemonicParsing="false" onAction="#submitCandidate" text="Submit" />
+      <TextArea fx:id="description" layoutX="109.0" layoutY="210.0" prefHeight="131.0" prefWidth="149.0" promptText="Description" stylesheets="@../../css/gui.css" />
+      <Button layoutX="477.0" layoutY="32.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
+      <Button layoutX="35.0" layoutY="20.0" mnemonicParsing="false" onAction="#back" text="Back" />
+   </children>
+</AnchorPane>

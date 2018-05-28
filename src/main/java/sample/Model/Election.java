@@ -24,7 +24,7 @@ public class Election {
     private String title;
 
     @Column(name = "isVotable")
-    private boolean isVotable;
+    private Boolean isVotable;
 
     public Election() {
     }
@@ -75,4 +75,9 @@ public class Election {
     public void setVotable(boolean votable) {
         isVotable = votable;
     }
+
+    public boolean getIsVotable() {
+        return isVotable;
+    }
+
 }

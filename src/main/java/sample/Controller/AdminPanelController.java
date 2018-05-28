@@ -91,13 +91,18 @@ public class AdminPanelController implements Initializable {
         this.actionEvent = event;
         loadScene("SelectEditableVoter");
     }
+    @FXML
+    public void stopVoting(ActionEvent event){
+
+    }
+
 
     private void loadScene(String page) {
         try {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fx/" + page +".fxml"));
             Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             primaryStage.setTitle(page);
-            primaryStage.setScene(new Scene(root, 800,600));
+            primaryStage.setScene(new Scene(root, 750,600));
             primaryStage.show();
         }catch (IOException e){
             e.printStackTrace();

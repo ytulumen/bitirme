@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="750.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.EditElectionController">
+   <children>
+      <Button layoutX="64.0" layoutY="62.0" mnemonicParsing="false" onAction="#back" text="Back" />
+      <Button layoutX="482.0" layoutY="336.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
+      <Button layoutX="438.0" layoutY="217.0" mnemonicParsing="false" onAction="#submitElection" text="Submit" />
+      <TextArea fx:id="topic" layoutX="72.0" layoutY="117.0" prefHeight="200.0" prefWidth="200.0" promptText="Topic" stylesheets="@../../css/gui.css" />
+      <TextField fx:id="title" layoutX="343.0" layoutY="62.0" promptText="Title" stylesheets="@../../css/gui.css" />
+   </children>
+</AnchorPane>

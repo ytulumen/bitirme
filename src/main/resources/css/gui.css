@@ -12,3 +12,24 @@
 .best{
     -fx-background-color: green,linear-gradient(to bottom, derive(green,60%) 5%,derive(green,90%) 40%);
 }
+.toggle-button {
+    -fx-background-image: url('../Pictures/software/logout.png');
+    -fx-background-size: 40px;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.add-button {
+    -fx-background-image: url('../Pictures/software/add.png');
+    -fx-background-size: 100px 100px;
+    -fx-background-repeat: no-repeat;
+}
+.delete-button {
+    -fx-background-image: url('../Pictures/software/delete.png');
+    -fx-background-size: 100px 100px;
+    -fx-background-repeat: no-repeat;
+}
+.edit-button {
+    -fx-background-image: url('../Pictures/software/edit.png');
+    -fx-background-size: 100px 100px;
+    -fx-background-repeat: no-repeat;
+}

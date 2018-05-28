@@ -12,3 +12,8 @@
 .best{
     -fx-background-color: green,linear-gradient(to bottom, derive(green,60%) 5%,derive(green,90%) 40%);
 }
+.toggle-button {
+    -fx-background-image: url('../Pictures/software/logout.png');
+    -fx-background-size: 40px;
+    -fx-background-repeat: no;
+}
