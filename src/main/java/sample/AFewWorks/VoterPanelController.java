@@ -81,10 +81,15 @@ public class VoterPanelController implements Initializable {
         primaryStage.show();
     }
 
-
+    @FXML
     public void logout(ActionEvent event) throws IOException {
         this.actionEvent = event;
         loadScene("MainPage");
+    }
+    @FXML
+    public void back(ActionEvent event) {
+        this.actionEvent = event;
+        loadScene("AdminPanel");
     }
 
     public void setVoterFromOutside(Voter voter){
@@ -104,7 +109,7 @@ public class VoterPanelController implements Initializable {
         List<Election> elections = new ArrayList<>();
         try {
             tx = sesn.beginTransaction();
-            elections = (List) sesn.createQuery("from Election").list();
+            elections = (List) sesn.createQuery("from Election where isVotable = '" + 1 + "'").list();
             tx.commit();
         } catch (HibernateException e) {
             e.printStackTrace();

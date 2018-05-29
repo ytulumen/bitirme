@@ -87,6 +87,11 @@ public class CandidatePanelController implements Initializable {
         loadScene("MainPage");
     }
     @FXML
+    public void back(ActionEvent event) {
+        this.actionEvent = event;
+        loadScene("MainPage");
+    }
+    @FXML
     public void submitCandidate(ActionEvent event) {
         boolean emptyFlag = true;
 

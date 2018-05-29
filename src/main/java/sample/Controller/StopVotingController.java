@@ -163,7 +163,7 @@ public class StopVotingController implements Initializable {
         List<Election> elections = new ArrayList<Election>();
         try {
             tx = sesn.beginTransaction();
-            elections = (List) sesn.createQuery("from Election").list();
+            elections = (List) sesn.createQuery("from Election where isVotable = '" + 1 + "'").list();
             tx.commit();
         } catch (HibernateException e) {
             e.printStackTrace();
