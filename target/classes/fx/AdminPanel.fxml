@@ -11,34 +11,34 @@
 
 <AnchorPane prefHeight="781.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.AdminPanelController">
    <children>
-      <Button layoutX="699.0" layoutY="18.0" mnemonicParsing="false" onAction="#logout" prefHeight="37.0" prefWidth="40.0" styleClass="toggle-button" stylesheets="@../css/gui.css" />
-      <TabPane prefHeight="681.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="60.0">
+      <Button layoutX="684.0" layoutY="25.0" mnemonicParsing="false" onAction="#logout" prefHeight="53.0" prefWidth="40.0" styleClass="toggle-button" stylesheets="@../css/gui.css" />
+      <TabPane layoutY="97.0" prefHeight="676.0" prefWidth="750.0" stylesheets="@../css/gui.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="97.0">
         <tabs>
-          <Tab text="Election">
+          <Tab styleClass="election-button">
             <content>
               <AnchorPane prefHeight="293.0" prefWidth="511.0">
                      <children>
-                        <Button layoutX="109.0" layoutY="94.0" mnemonicParsing="false" onAction="#addElection" prefHeight="60.0" prefWidth="532.0" text="Add Election">
+                        <Button layoutX="205.0" layoutY="33.0" mnemonicParsing="false" onAction="#addElection" prefHeight="152.0" prefWidth="152.0" styleClass="add-button" stylesheets="@../css/gui.css">
                            <font>
                               <Font name="Lucida Sans Unicode" size="24.0" />
                            </font></Button>
-                        <Button layoutX="109.0" layoutY="14.0" mnemonicParsing="false" onAction="#showElections" prefHeight="60.0" prefWidth="532.0" text="Show Elections">
+                        <Button layoutX="32.0" layoutY="33.0" mnemonicParsing="false" onAction="#showElections" prefHeight="152.0" prefWidth="152.0" styleClass="look-button" stylesheets="@../css/gui.css">
                            <font>
                               <Font name="Lucida Sans Unicode" size="24.0" />
                            </font></Button>
-                        <Button layoutX="109.0" layoutY="174.0" mnemonicParsing="false" onAction="#deleteElection" prefHeight="60.0" prefWidth="532.0" text="Delete Election">
+                        <Button layoutX="375.0" layoutY="33.0" mnemonicParsing="false" onAction="#deleteElection" prefHeight="152.0" prefWidth="141.0" styleClass="delete-button" stylesheets="@../css/gui.css">
                            <font>
                               <Font name="Lucida Sans Unicode" size="24.0" />
                            </font></Button>
-                        <Button layoutX="109.0" layoutY="334.0" mnemonicParsing="false" onAction="#showResults" prefHeight="60.0" prefWidth="532.0" text="Show Results">
+                        <Button layoutX="196.0" layoutY="259.0" mnemonicParsing="false" onAction="#showResults" prefHeight="152.0" prefWidth="152.0" styleClass="results-button" stylesheets="@../css/gui.css">
                            <font>
                               <Font name="Lucida Sans Unicode" size="24.0" />
                            </font></Button>
-                        <Button layoutX="109.0" layoutY="254.0" mnemonicParsing="false" onAction="#editElection" prefHeight="60.0" prefWidth="532.0" text="Edit Election">
+                        <Button layoutX="537.0" layoutY="33.0" mnemonicParsing="false" onAction="#editElection" prefHeight="152.0" prefWidth="152.0" styleClass="edit-button" stylesheets="@../css/gui.css">
                            <font>
                               <Font name="Lucida Sans Unicode" size="24.0" />
                            </font></Button>
-                        <Button layoutX="109.0" layoutY="414.0" mnemonicParsing="false" onAction="#stopVoting" prefHeight="60.0" prefWidth="532.0" text="Stop Voting">
+                        <Button layoutX="375.0" layoutY="259.0" mnemonicParsing="false" onAction="#stopVoting" prefHeight="152.0" prefWidth="152.0" styleClass="stop-button" stylesheets="@../css/gui.css">
                            <font>
                               <Font name="Lucida Sans Unicode" size="24.0" />
                            </font>
@@ -47,23 +47,23 @@
                   </AnchorPane>
             </content>
           </Tab>
-          <Tab text="Candidate">
+          <Tab styleClass="candidate-button">
                <content>
                   <AnchorPane prefHeight="200.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="109.0" layoutY="14.0" mnemonicParsing="false" onAction="#showCandidates" prefHeight="60.0" prefWidth="532.0" text="Show Candidates">
+                        <Button layoutX="32.0" layoutY="33.0" mnemonicParsing="false" onAction="#showCandidates" prefHeight="152.0" prefWidth="152.0" styleClass="look-button" stylesheets="@../css/gui.css">
                            <font>
                               <Font name="Lucida Sans Unicode" size="24.0" />
                            </font></Button>
-                        <Button layoutX="109.0" layoutY="174.0" mnemonicParsing="false" onAction="#deleteCandidate" prefHeight="60.0" prefWidth="532.0" text="Delete Candidate">
+                        <Button layoutX="379.0" layoutY="33.0" mnemonicParsing="false" onAction="#deleteCandidate" prefHeight="152.0" prefWidth="140.0" styleClass="delete-button" stylesheets="@../css/gui.css">
                            <font>
                               <Font name="Lucida Sans Unicode" size="24.0" />
                            </font></Button>
-                        <Button layoutX="109.0" layoutY="94.0" mnemonicParsing="false" onAction="#addCandidate" prefHeight="60.0" prefWidth="532.0" text="Add Candidate">
+                        <Button layoutX="208.0" layoutY="33.0" mnemonicParsing="false" onAction="#addCandidate" prefHeight="152.0" prefWidth="152.0" styleClass="add-button" stylesheets="@../css/gui.css">
                            <font>
                               <Font name="Lucida Sans Unicode" size="24.0" />
                            </font></Button>
-                        <Button layoutX="109.0" layoutY="254.0" mnemonicParsing="false" onAction="#editCandidate" prefHeight="60.0" prefWidth="532.0" text="Edit Candidate">
+                        <Button layoutX="539.0" layoutY="33.0" mnemonicParsing="false" onAction="#editCandidate" prefHeight="152.0" prefWidth="152.0" styleClass="edit-button" stylesheets="@../css/gui.css">
                            <font>
                               <Font name="Lucida Sans Unicode" size="24.0" />
                            </font></Button>
@@ -71,23 +71,23 @@
                   </AnchorPane>
                </content>
           </Tab>
-            <Tab text="Voter">
+            <Tab styleClass="voter-button">
               <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="510.0" prefWidth="750.0" stylesheets="@../css/gui.css">
                      <children>
-                        <Button layoutX="109.0" layoutY="14.0" mnemonicParsing="false" onAction="#showVoters" prefHeight="60.0" prefWidth="532.0" text="Show Voters">
+                        <Button layoutX="32.0" layoutY="33.0" mnemonicParsing="false" onAction="#showVoters" prefHeight="152.0" prefWidth="152.0" styleClass="look-button" stylesheets="@../css/gui.css">
                            <font>
                               <Font name="Lucida Sans Unicode" size="24.0" />
                            </font></Button>
-                        <Button layoutX="109.0" layoutY="174.0" mnemonicParsing="false" onAction="#deleteVoter" prefHeight="60.0" prefWidth="532.0" text="Delete Voter">
+                        <Button layoutX="377.0" layoutY="33.0" mnemonicParsing="false" onAction="#deleteVoter" prefHeight="152.0" prefWidth="139.0" styleClass="delete-button" stylesheets="@../css/gui.css">
                            <font>
                               <Font name="Lucida Sans Unicode" size="24.0" />
                            </font></Button>
-                        <Button layoutX="109.0" layoutY="94.0" mnemonicParsing="false" onAction="#addVoter" prefHeight="60.0" prefWidth="532.0" text="Add Voter">
+                        <Button layoutX="206.0" layoutY="35.0" mnemonicParsing="false" onAction="#addVoter" prefHeight="152.0" prefWidth="152.0" styleClass="add-button" stylesheets="@../css/gui.css">
                            <font>
                               <Font name="Lucida Sans Unicode" size="24.0" />
                            </font></Button>
-                        <Button layoutX="109.0" layoutY="254.0" mnemonicParsing="false" onAction="#editVoter" prefHeight="60.0" prefWidth="532.0" text="Edit Voter">
+                        <Button layoutX="539.0" layoutY="35.0" mnemonicParsing="false" onAction="#editVoter" prefHeight="152.0" prefWidth="152.0" styleClass="edit-button" stylesheets="@../css/gui.css">
                            <font>
                               <Font name="Lucida Sans Unicode" size="24.0" />
                            </font></Button>
@@ -97,7 +97,7 @@
             </Tab>
         </tabs>
       </TabPane>
-      <ImageView fitHeight="28.0" fitWidth="200.0" layoutX="185.0" layoutY="24.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="270.0">
+      <ImageView fitHeight="28.0" fitWidth="200.0" layoutX="275.0" layoutY="37.0" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="275.0" AnchorPane.topAnchor="37.0">
          <image>
             <Image url="@../Pictures/software/adminpanel.png" />
          </image>
