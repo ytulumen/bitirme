@@ -7,11 +7,11 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="778.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.DeleteVoterController">
+<AnchorPane prefHeight="700.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.DeleteVoterController">
    <children>
-      <Button layoutX="582.0" layoutY="665.0" mnemonicParsing="false" onAction="#delete" prefHeight="53.0" prefWidth="54.0" text="Delete" />
-      <TextField fx:id="voterID" layoutX="375.0" layoutY="684.0" promptText="Voter ID" stylesheets="@../css/gui.css" />
-      <TableView fx:id="voterTable" layoutY="104.0" prefHeight="547.0" prefWidth="750.0" AnchorPane.topAnchor="97.0">
+      <Button layoutX="582.0" layoutY="625.0" mnemonicParsing="false" onAction="#delete" prefHeight="53.0" prefWidth="47.0" styleClass="small-delete-button" stylesheets="@../css/gui.css" />
+      <TextField fx:id="voterID" layoutX="375.0" layoutY="639.0" promptText="Voter ID" stylesheets="@../css/gui.css" />
+      <TableView fx:id="voterTable" layoutY="104.0" prefHeight="520.0" prefWidth="750.0" AnchorPane.bottomAnchor="101.0" AnchorPane.topAnchor="97.0">
          <columns>
             <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
             <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />

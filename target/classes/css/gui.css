@@ -89,6 +89,11 @@
     -fx-background-size: 50px 50px;
     -fx-background-repeat: no-repeat;
 }
+.small-stop-button {
+    -fx-background-image: url('../Pictures/software/smallstop.png');
+    -fx-background-size: 50px 50px;
+    -fx-background-repeat: no-repeat;
+}
 .add-picture-button {
     -fx-background-image: url('../Pictures/software/addpicture.png');
     -fx-background-size: 50px 50px;

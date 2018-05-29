@@ -1,9 +1,8 @@
 package sample.Model;
 
-import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
 
 @Entity
 @Table(name = "election")
@@ -24,6 +23,8 @@ public class Election {
     private String title;
 
     @Column(name = "isVotable")
+    @Type(type = "org.hibernate.type.NumericBooleanType")
+
     private Boolean isVotable;
 
     public Election() {

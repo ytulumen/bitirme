@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.StopVotingController">
+   <children>
+      <Button layoutX="13.0" layoutY="30.0" mnemonicParsing="false" onAction="#back" prefHeight="40.0" prefWidth="40.0" styleClass="back-button" stylesheets="@../css/gui.css" />
+      <Button layoutX="683.0" layoutY="24.0" mnemonicParsing="false" onAction="#logout" prefHeight="53.0" prefWidth="40.0" styleClass="toggle-button" stylesheets="@../css/gui.css" />
+      <TableView fx:id="electionTable" layoutY="98.0" prefHeight="520.0" prefWidth="750.0" AnchorPane.topAnchor="98.0">
+         <columns>
+            <TableColumn fx:id="idColumn" prefWidth="107.0" text="ID" />
+            <TableColumn fx:id="titleColumn" prefWidth="144.0" text="Title" />
+            <TableColumn fx:id="descriptionColumn" prefWidth="357.0" text="Description" />
+            <TableColumn fx:id="votingColumn" prefWidth="141.0" text="Voting" />
+         </columns>
+      </TableView>
+      <Button layoutX="581.0" layoutY="624.0" mnemonicParsing="false" onAction="#edit" prefHeight="53.0" prefWidth="48.0" styleClass="small-stop-button" stylesheets="@../css/gui.css" />
+      <TextField fx:id="electionID" layoutX="374.0" layoutY="638.0" promptText="Election ID" stylesheets="@../css/gui.css" />
+      <ImageView fitHeight="29.0" fitWidth="200.0" layoutX="274.0" layoutY="36.0" AnchorPane.topAnchor="36.0">
+         <image>
+            <Image url="@../Pictures/software/stopvoting.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

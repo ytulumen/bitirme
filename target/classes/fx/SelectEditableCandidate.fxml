@@ -7,13 +7,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="750.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.SelectEditableCandidateController">
+<AnchorPane prefHeight="700.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.SelectEditableCandidateController">
    <children>
-      <Button layoutX="582.0" layoutY="665.0" mnemonicParsing="false" onAction="#edit" prefHeight="53.0" prefWidth="54.0" styleClass="small-edit-button" stylesheets="@../css/gui.css" />
-      <TextField fx:id="candidateID" layoutX="375.0" layoutY="679.0" promptText="Candidate ID" />
+      <Button layoutX="582.0" layoutY="625.0" mnemonicParsing="false" onAction="#edit" prefHeight="53.0" prefWidth="54.0" styleClass="small-edit-button" stylesheets="@../css/gui.css" />
+      <TextField fx:id="candidateID" layoutX="375.0" layoutY="639.0" promptText="Candidate ID" />
       <Button layoutX="684.0" layoutY="25.0" mnemonicParsing="false" onAction="#logout" prefHeight="53.0" prefWidth="40.0" styleClass="toggle-button" stylesheets="@../css/gui.css" />
       <Button layoutX="14.0" layoutY="31.0" mnemonicParsing="false" onAction="#back" prefHeight="40.0" prefWidth="40.0" styleClass="back-button" stylesheets="@../css/gui.css" />
-      <TableView fx:id="candidateTable" layoutY="86.0" prefHeight="536.0" prefWidth="750.0" AnchorPane.topAnchor="97.0">
+      <TableView fx:id="candidateTable" layoutY="86.0" prefHeight="520.0" prefWidth="750.0" AnchorPane.topAnchor="97.0">
          <columns>
             <TableColumn fx:id="idColumn" prefWidth="108.0" text="Identitiy Number" />
             <TableColumn fx:id="nameColumn" prefWidth="71.0" text="Name" />

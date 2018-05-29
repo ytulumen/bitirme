@@ -10,13 +10,21 @@
 
 <AnchorPane prefHeight="700.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.CandidatePanelController">
    <children>
-      <Button layoutX="33.0" layoutY="14.0" mnemonicParsing="false" onAction="#logout" text="Logout" />
-      <ImageView fitHeight="79.0" fitWidth="149.0" layoutX="348.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true" />
-      <TextArea fx:id="description" layoutX="99.0" layoutY="200.0" prefHeight="131.0" prefWidth="149.0" promptText="Description" stylesheets="@../../css/gui.css" />
-      <Button layoutX="455.0" layoutY="435.0" mnemonicParsing="false" onAction="#submitCandidate" text="Submit" />
-      <PasswordField fx:id="password" layoutX="99.0" layoutY="154.0" promptText="Password" stylesheets="@../../css/gui.css" />
-      <Label layoutX="234.0" layoutY="34.0" prefHeight="17.0" prefWidth="149.0" text="EDIT CANDIDATE" />
-      <ImageView fx:id="imageView" fitHeight="150.0" fitWidth="200.0" layoutX="347.0" layoutY="250.0" pickOnBounds="true" preserveRatio="true" />
-      <Button layoutX="370.0" layoutY="400.0" mnemonicParsing="false" onAction="#loadImage" text="Change Picture" />
+      <Button layoutX="684.0" layoutY="25.0" mnemonicParsing="false" onAction="#logout" prefHeight="53.0" prefWidth="40.0" styleClass="toggle-button" stylesheets="@../../css/gui.css" />
+      <ImageView fx:id="imageView" fitHeight="145.0" fitWidth="173.0" layoutX="410.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="417.0" />
+      <Button layoutX="630.0" layoutY="226.0" mnemonicParsing="false" onAction="#loadImage" prefHeight="53.0" prefWidth="54.0" styleClass="add-picture-button" stylesheets="@../../css/gui.css" />
+      <Button layoutX="14.0" layoutY="31.0" mnemonicParsing="false" onAction="#back" prefHeight="40.0" prefWidth="40.0" styleClass="back-button" stylesheets="@../../css/gui.css" />
+      <TextArea fx:id="description" layoutX="155.0" layoutY="425.0" prefHeight="208.0" prefWidth="173.0" promptText="Description" stylesheets="@../../css/gui.css" AnchorPane.leftAnchor="145.0" AnchorPane.topAnchor="180.0" />
+      <Button layoutX="592.0" layoutY="425.0" mnemonicParsing="false" onAction="#submitCandidate" prefHeight="53.0" prefWidth="54.0" styleClass="small-add-button" stylesheets="@../../css/gui.css" />
+      <PasswordField fx:id="password" layoutX="155.0" layoutY="335.0" prefHeight="40.0" prefWidth="173.0" promptText="Password" stylesheets="@../../css/gui.css" AnchorPane.leftAnchor="145.0" AnchorPane.topAnchor="95.0">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </PasswordField>
+      <ImageView fitHeight="28.0" fitWidth="200.0" layoutX="275.0" layoutY="37.0" AnchorPane.topAnchor="37.0">
+         <image>
+            <Image url="@../../Pictures/software/candidatepanel.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

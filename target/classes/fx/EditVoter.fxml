@@ -8,10 +8,10 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="750.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.EditVoterController">
+<AnchorPane prefHeight="700.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.EditVoterController">
    <children>
       <Button layoutX="684.0" layoutY="25.0" mnemonicParsing="false" onAction="#logout" prefHeight="53.0" prefWidth="40.0" styleClass="toggle-button" stylesheets="@../css/gui.css" />
-      <Button layoutX="582.0" layoutY="665.0" mnemonicParsing="false" onAction="#submitVoter" prefHeight="53.0" prefWidth="54.0" styleClass="small-add-button" stylesheets="@../css/gui.css" />
+      <Button layoutX="582.0" layoutY="625.0" mnemonicParsing="false" onAction="#submitVoter" prefHeight="53.0" prefWidth="54.0" styleClass="small-edit-button" stylesheets="@../css/gui.css" />
       <TextField fx:id="city" layoutX="417.0" layoutY="339.0" prefHeight="40.0" prefWidth="173.0" promptText="City" stylesheets="@../css/gui.css" AnchorPane.topAnchor="340.0">
          <font>
             <Font size="18.0" />

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="700.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.AddElectionController">
+   <children>
+      <Button layoutX="14.0" layoutY="31.0" mnemonicParsing="false" onAction="#back" prefHeight="40.0" prefWidth="40.0" styleClass="back-button" stylesheets="@../css/gui.css" />
+      <Button layoutX="684.0" layoutY="25.0" mnemonicParsing="false" onAction="#logout" prefHeight="53.0" prefWidth="40.0" styleClass="toggle-button" stylesheets="@../css/gui.css" />
+      <TextField fx:id="electionid" layoutX="105.0" layoutY="102.0" prefHeight="40.0" prefWidth="173.0" promptText="Election ID" stylesheets="@../css/gui.css" AnchorPane.leftAnchor="145.0" AnchorPane.topAnchor="95.0">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <TextArea fx:id="topic" layoutX="145.0" layoutY="166.0" prefHeight="209.0" prefWidth="173.0" promptText="Topic" stylesheets="@../css/gui.css" />
+      <TextField fx:id="title" layoutX="366.0" layoutY="102.0" prefHeight="40.0" prefWidth="173.0" promptText="Title" stylesheets="@../css/gui.css" AnchorPane.leftAnchor="417.0" AnchorPane.topAnchor="95.0">
+         <font>
+            <Font size="18.0" />
+         </font></TextField>
+      <Button layoutX="582.0" layoutY="365.0" mnemonicParsing="false" onAction="#submitElection" prefHeight="53.0" prefWidth="54.0" styleClass="small-add-button" stylesheets="@../css/gui.css" />
+      <ImageView fitHeight="28.0" fitWidth="200.0" layoutX="275.0" layoutY="37.0" AnchorPane.topAnchor="37.0">
+         <image>
+            <Image url="@../Pictures/software/addelection.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

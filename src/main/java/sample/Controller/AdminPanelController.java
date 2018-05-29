@@ -93,7 +93,8 @@ public class AdminPanelController implements Initializable {
     }
     @FXML
     public void stopVoting(ActionEvent event){
-
+        this.actionEvent = event;
+        loadScene("StopVoting");
     }
 
 
