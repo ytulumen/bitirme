@@ -94,14 +94,14 @@ public class SelectEditableElectionController implements Initializable {
         FXMLLoader loader = null;
         Parent root = null;
         try {
-            loader = new FXMLLoader(getClass().getClassLoader().getResource("fx/notdone/EditElection.fxml"));
+            loader = new FXMLLoader(getClass().getClassLoader().getResource("fx/EditElection.fxml"));
             root = loader.load();
             EditElectionController editElectionController = loader.getController();
             editElectionController.setElectionIdFromOutside(id);
             editElectionController.loadElection();
             Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             primaryStage.setTitle("EditElection");
-            primaryStage.setScene(new Scene(root, 750,600));
+            primaryStage.setScene(new Scene(root, 750,700));
             primaryStage.show();
         }catch (IOException e){
             e.printStackTrace();
@@ -140,7 +140,7 @@ public class SelectEditableElectionController implements Initializable {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fx/" + page +".fxml"));
             Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             primaryStage.setTitle(page);
-            primaryStage.setScene(new Scene(root, 750,600));
+            primaryStage.setScene(new Scene(root, 750,700));
             primaryStage.show();
         }catch (IOException e){
             e.printStackTrace();

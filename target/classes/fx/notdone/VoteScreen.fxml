@@ -9,6 +9,6 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="sample.NotDone.VoteScreenController"
-            prefHeight="750.0" prefWidth="600.0">
+            prefHeight="700.0" prefWidth="750.0">
 
 </AnchorPane>

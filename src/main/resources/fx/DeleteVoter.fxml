@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="700.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.DeleteVoterController">
+   <children>
+      <Button layoutX="582.0" layoutY="625.0" mnemonicParsing="false" onAction="#delete" prefHeight="53.0" prefWidth="47.0" styleClass="small-delete-button" stylesheets="@../css/gui.css" />
+      <TextField fx:id="voterID" layoutX="375.0" layoutY="639.0" promptText="Voter ID" stylesheets="@../css/gui.css" />
+      <TableView fx:id="voterTable" layoutY="104.0" prefHeight="520.0" prefWidth="750.0" AnchorPane.bottomAnchor="101.0" AnchorPane.topAnchor="97.0">
+         <columns>
+            <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
+            <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
+            <TableColumn fx:id="surnameColumn" prefWidth="75.0" text="Surname" />
+            <TableColumn fx:id="addressColumn" prefWidth="281.0" text="Address" />
+         </columns>
+      </TableView>
+      <Button layoutX="684.0" layoutY="25.0" mnemonicParsing="false" onAction="#logout" prefHeight="53.0" prefWidth="40.0" styleClass="toggle-button" stylesheets="@../css/gui.css" />
+      <Button layoutX="14.0" layoutY="31.0" mnemonicParsing="false" onAction="#back" prefHeight="40.0" prefWidth="40.0" styleClass="back-button" stylesheets="@../css/gui.css" />
+      <ImageView fitHeight="28.0" fitWidth="200.0" layoutX="275.0" layoutY="50.0" AnchorPane.topAnchor="37.0">
+         <image>
+            <Image url="@../Pictures/software/deletevoter.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

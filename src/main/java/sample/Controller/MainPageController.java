@@ -135,7 +135,7 @@ public class MainPageController implements Initializable {
         }
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         primaryStage.setTitle(source);
-        primaryStage.setScene(new Scene(root, 750,600));
+        primaryStage.setScene(new Scene(root, 750,700));
         primaryStage.show();
 
 

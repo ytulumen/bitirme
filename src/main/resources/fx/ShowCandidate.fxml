@@ -7,9 +7,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="750.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ShowCandidateController">
+<AnchorPane prefHeight="700.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ShowCandidateController">
    <children>
-      <TableView fx:id="candidateTable" layoutY="97.0" prefHeight="676.0" prefWidth="750.0" AnchorPane.topAnchor="97.0">
+      <TableView fx:id="candidateTable" layoutY="97.0" prefHeight="603.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="97.0">
          <columns>
             <TableColumn fx:id="idColumn" prefWidth="102.0" text="Identitiy Number" />
             <TableColumn fx:id="nameColumn" prefWidth="88.0" text="Name" />

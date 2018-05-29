@@ -180,7 +180,7 @@ public class EditVoterController implements Initializable {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fx/" + page +".fxml"));
             Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
             primaryStage.setTitle(page);
-            primaryStage.setScene(new Scene(root, 750,600));
+            primaryStage.setScene(new Scene(root, 750,700));
             primaryStage.show();
         }catch (IOException e){
             e.printStackTrace();

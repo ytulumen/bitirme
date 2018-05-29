@@ -27,7 +27,7 @@ public class VoteScreenController implements Initializable {
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fx/MainPage.fxml"));
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         primaryStage.setTitle("Main Panel");
-        primaryStage.setScene(new Scene(root, 750,600));
+        primaryStage.setScene(new Scene(root, 750,700));
         primaryStage.show();
     }
     public void setVariables(Election election, Voter voter){

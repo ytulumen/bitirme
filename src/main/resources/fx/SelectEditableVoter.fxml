@@ -7,13 +7,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="750.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.SelectEditableVoterController">
+<AnchorPane prefHeight="700.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.SelectEditableVoterController">
    <children>
       <Button layoutX="14.0" layoutY="31.0" mnemonicParsing="false" onAction="#back" prefHeight="40.0" prefWidth="40.0" styleClass="back-button" stylesheets="@../css/gui.css" />
       <Button layoutX="684.0" layoutY="25.0" mnemonicParsing="false" onAction="#logout" prefHeight="53.0" prefWidth="40.0" styleClass="toggle-button" stylesheets="@../css/gui.css" />
-      <TextField fx:id="voterID" layoutX="375.0" layoutY="679.0" promptText="Voter ID" stylesheets="@../css/gui.css" />
-      <Button layoutX="582.0" layoutY="665.0" mnemonicParsing="false" onAction="#edit" prefHeight="53.0" prefWidth="54.0" styleClass="small-edit-button" stylesheets="@../css/gui.css" />
-      <TableView fx:id="voterTable" layoutY="91.0" prefHeight="560.0" prefWidth="750.0" AnchorPane.topAnchor="91.0">
+      <TextField fx:id="voterID" layoutX="375.0" layoutY="639.0" promptText="Voter ID" stylesheets="@../css/gui.css" />
+      <Button layoutX="581.0" layoutY="625.0" mnemonicParsing="false" onAction="#edit" prefHeight="53.0" prefWidth="54.0" styleClass="small-edit-button" stylesheets="@../css/gui.css" />
+      <TableView fx:id="voterTable" layoutY="91.0" prefHeight="520.0" prefWidth="750.0" AnchorPane.topAnchor="97.0">
          <columns>
             <TableColumn fx:id="idColumn" prefWidth="75.0" text="ID" />
             <TableColumn fx:id="nameColumn" prefWidth="75.0" text="Name" />
