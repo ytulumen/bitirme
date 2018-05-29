@@ -2,31 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/sample/Controller/StopVotingController.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/Pictures/software/smallstop.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/Pictures/software/stopvoting.png" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/fx/StopVoting.fxml" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sample/Controller/AdminPanelController.java" afterPath="$PROJECT_DIR$/src/main/java/sample/Controller/AdminPanelController.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/sample/Model/Election.java" afterPath="$PROJECT_DIR$/src/main/java/sample/Model/Election.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/css/gui.css" afterPath="$PROJECT_DIR$/src/main/resources/css/gui.css" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fx/DeleteCandidate.fxml" afterPath="$PROJECT_DIR$/target/classes/fx/DeleteCandidate.fxml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fx/DeleteElection.fxml" afterPath="$PROJECT_DIR$/target/classes/fx/DeleteElection.fxml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fx/DeleteVoter.fxml" afterPath="$PROJECT_DIR$/target/classes/fx/DeleteVoter.fxml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fx/EditCandidate.fxml" afterPath="$PROJECT_DIR$/target/classes/fx/EditCandidate.fxml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fx/EditElection.fxml" afterPath="$PROJECT_DIR$/target/classes/fx/EditElection.fxml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fx/EditVoter.fxml" afterPath="$PROJECT_DIR$/target/classes/fx/EditVoter.fxml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fx/SelectEditableCandidate.fxml" afterPath="$PROJECT_DIR$/target/classes/fx/SelectEditableCandidate.fxml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fx/SelectEditableElection.fxml" afterPath="$PROJECT_DIR$/target/classes/fx/SelectEditableElection.fxml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fx/SelectEditableVoter.fxml" afterPath="$PROJECT_DIR$/target/classes/fx/SelectEditableVoter.fxml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fx/ShowCandidate.fxml" afterPath="$PROJECT_DIR$/target/classes/fx/ShowCandidate.fxml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fx/ShowElections.fxml" afterPath="$PROJECT_DIR$/target/classes/fx/ShowElections.fxml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fx/ShowVoters.fxml" afterPath="$PROJECT_DIR$/target/classes/fx/ShowVoters.fxml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fx/notdone/AddCandidate.fxml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fx/notdone/AddElection.fxml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fx/notdone/AddVoter.fxml" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fx/notdone/CandidatePanel.fxml" afterPath="$PROJECT_DIR$/target/classes/fx/notdone/CandidatePanel.fxml" />
-      <change beforePath="$PROJECT_DIR$/target/classes/sample/Controller/AdminPanelController.class" afterPath="$PROJECT_DIR$/target/classes/sample/Controller/AdminPanelController.class" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/sample/Controller/AddCandidateController.java" afterPath="$PROJECT_DIR$/src/main/java/sample/Controller/AddCandidateController.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -112,14 +88,12 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="StopVotingController.java" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/sample/Controller/StopVotingController.java">
+          <file leaf-file-name="AddCandidateController.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/sample/Controller/AddCandidateController.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="221">
-                  <caret line="127" column="53" lean-forward="true" selection-start-line="127" selection-start-column="53" selection-end-line="127" selection-end-column="53" />
-                  <folding>
-                    <element signature="imports" expanded="true" />
-                  </folding>
+                <state relative-caret-position="216">
+                  <caret line="305" column="23" lean-forward="true" selection-start-line="305" selection-start-column="23" selection-end-line="305" selection-end-column="23" />
+                  <folding />
                 </state>
               </provider>
             </entry>
@@ -168,11 +142,23 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Election.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Election.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/sample/Model/Election.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="204">
                   <caret line="12" column="24" lean-forward="true" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="StopVotingController.java" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/java/sample/Controller/StopVotingController.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="408">
+                  <caret line="138" column="9" lean-forward="true" selection-start-line="138" selection-start-column="9" selection-end-line="138" selection-end-column="9" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -196,7 +182,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Transaction</find>
       <find>&quot;electi</find>
       <find>&quot;candida</find>
       <find>AddCandidate</find>
@@ -226,6 +211,7 @@
       <find>800</find>
       <find>600</find>
       <find>AnchorPane pr</find>
+      <find>getElection</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -247,7 +233,6 @@
         <option value="$PROJECT_DIR$/src/main/java/sample/NotDone/DeleteElectionController.java" />
         <option value="$PROJECT_DIR$/src/main/resources/fx/AddVoter.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/fx/AddCandidate.fxml" />
-        <option value="$PROJECT_DIR$/src/main/java/sample/Controller/AddCandidateController.java" />
         <option value="$PROJECT_DIR$/src/main/java/sample/Controller/AddElectionController.java" />
         <option value="$PROJECT_DIR$/src/main/java/sample/Controller/DeleteCandidateController.java" />
         <option value="$PROJECT_DIR$/src/main/java/sample/AFewWorks/CandidatePanelController.java" />
@@ -295,6 +280,7 @@
         <option value="$PROJECT_DIR$/src/main/resources/css/gui.css" />
         <option value="$PROJECT_DIR$/src/main/java/sample/Model/Election.java" />
         <option value="$PROJECT_DIR$/src/main/java/sample/Controller/StopVotingController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/sample/Controller/AddCandidateController.java" />
       </list>
     </option>
   </component>
@@ -729,12 +715,12 @@
       <workItem from="1526335316894" duration="6811000" />
       <workItem from="1526685350527" duration="23520000" />
       <workItem from="1527030292660" duration="42585000" />
-      <workItem from="1527432222630" duration="29339000" />
+      <workItem from="1527432222630" duration="30164000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="164797000" />
+    <option name="totallyTimeSpent" value="165622000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -747,7 +733,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-1928" y="-320" width="1936" height="1066" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -766,11 +751,11 @@
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.44575724" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.44575724" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32995737" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="14" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17110874" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17110874" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32867885" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -888,14 +873,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/Controller/CandidatePanelController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="37" column="13" lean-forward="false" selection-start-line="37" selection-start-column="13" selection-end-line="37" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sample/Controller/SelectEditableCandidateController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="474">
@@ -1363,16 +1340,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/sample/Controller/StopVotingController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="127" column="53" lean-forward="true" selection-start-line="127" selection-start-column="53" selection-end-line="127" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/sample/Model/Election.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
@@ -1380,6 +1347,24 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/Controller/StopVotingController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="138" column="9" lean-forward="true" selection-start-line="138" selection-start-column="9" selection-end-line="138" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/sample/Controller/AddCandidateController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="305" column="23" lean-forward="true" selection-start-line="305" selection-start-column="23" selection-end-line="305" selection-end-column="23" />
+          <folding />
         </state>
       </provider>
     </entry>
