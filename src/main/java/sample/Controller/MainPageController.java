@@ -16,7 +16,6 @@ import org.hibernate.Transaction;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
-import sample.AFewWorks.VoterPanelController;
 import sample.Model.Candidate;
 import sample.Model.Voter;
 

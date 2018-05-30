@@ -1,4 +1,4 @@
-package sample.AFewWorks;
+package sample.Controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,6 +20,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import sample.Model.Election;
+import sample.Model.ElectionVoter;
 import sample.Model.Voter;
 import sample.NotDone.VoteScreenController;
 
@@ -60,8 +61,7 @@ public class VoterPanelController implements Initializable {
         idColumn.setCellValueFactory(new PropertyValueFactory<Election, Integer>("electionID"));
         titleColumn.setCellValueFactory(new PropertyValueFactory<Election, String>("topic"));
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<Election, String>("title"));
-        observableElections.addAll(getElections());
-        electionTable.setItems(observableElections);
+
 
     }
 
@@ -91,11 +91,50 @@ public class VoterPanelController implements Initializable {
         this.actionEvent = event;
         loadScene("AdminPanel");
     }
-
+    private List<Election> getUniqueElection(){
+        List<Election> elections = getElections();
+        List<ElectionVoter> electionVoters = getElectionVoter();
+        List <Election> returnList = new ArrayList<>();
+        boolean selectionFlag = true;
+        for (Election election: elections ) {
+            selectionFlag = true;
+            for (ElectionVoter electionVoter: electionVoters ) {
+                if(electionVoter.getElectionid() == election.getElectionID()
+                        && electionVoter.getVoterid() == voter.getIdentityNumber()){
+                    selectionFlag = false;
+                }
+            }
+            if(selectionFlag){
+                returnList.add(election);
+            }
+        }
+        return returnList;
+    }
     public void setVoterFromOutside(Voter voter){
         this.voter = voter;
     }
     public void loadVoter(){
+/*        Configuration config = new Configuration();
+        config.configure();
+        config.addAnnotatedClass(Voter.class);
+        serviceRegistry = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();
+        factory = config.buildSessionFactory(serviceRegistry);
+        Session sesn = factory.openSession();
+        Transaction tx = null;
+        List<Voter> voters = new ArrayList<Voter>();
+        try {
+            tx = sesn.beginTransaction();
+            voters = (List) sesn.createQuery("from Voter").list();
+            tx.commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            sesn.close();
+        }
+
+        return voters;*/
+        observableElections.addAll(getUniqueElection());
+        electionTable.setItems(observableElections);
 
     }
     private List<Election> getElections() {
@@ -129,6 +168,27 @@ public class VoterPanelController implements Initializable {
         }catch (IOException e){
             e.printStackTrace();
         }
+    }
+    private List<ElectionVoter> getElectionVoter() {
+        Configuration config = new Configuration();
+        config.configure();
+        config.addAnnotatedClass(ElectionVoter.class);
+        serviceRegistry = new StandardServiceRegistryBuilder().applySettings(config.getProperties()).build();
+        factory = config.buildSessionFactory(serviceRegistry);
+        Session sesn = factory.openSession();
+        Transaction tx = null;
+        List<ElectionVoter> electionVoters = new ArrayList<>();
+        try {
+            tx = sesn.beginTransaction();
+            electionVoters = (List) sesn.createQuery("from ElectionVoter where voterid = '" + voter.getIdentityNumber() + "'").list();
+            tx.commit();
+        } catch (HibernateException e) {
+            e.printStackTrace();
+        } finally {
+            sesn.close();
+        }
+
+        return electionVoters;
     }
 
 }

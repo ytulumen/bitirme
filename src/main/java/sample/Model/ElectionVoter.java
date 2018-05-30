@@ -19,6 +19,9 @@ public class ElectionVoter {
     @Column(name = "voterid")
     private int voterid;
 
+    public ElectionVoter() {
+    }
+
     public ElectionVoter(int electionid, int voterid) {
         this.electionid = electionid;
         this.voterid = voterid;
