@@ -54,9 +54,9 @@ public class MainPageController implements Initializable {
                 "Candidate"
         );
 
-        choiceBox.setValue("Admin");
-        userName.setText("Admin");
-        passwordField.setText("admin");
+        choiceBox.setValue("Voter");
+        userName.setText("2222");
+        passwordField.setText("2222");
 
     }
 

@@ -22,7 +22,6 @@ import org.hibernate.service.ServiceRegistry;
 import sample.Model.Election;
 import sample.Model.ElectionVoter;
 import sample.Model.Voter;
-import sample.NotDone.VoteScreenController;
 
 import java.io.IOException;
 import java.net.URL;
@@ -35,7 +34,7 @@ public class VoterPanelController implements Initializable {
     private static SessionFactory factory;
     private static ServiceRegistry serviceRegistry;
     private ActionEvent actionEvent;
-
+    private Election election;
     private Voter voter;
 
     @FXML
@@ -67,18 +66,9 @@ public class VoterPanelController implements Initializable {
 
     @FXML
     public void selectElection(ActionEvent event)throws IOException {
-        Election election = electionTable.getSelectionModel().getSelectedItem();
+        //Election election = electionTable.getSelectionModel().getSelectedItem();
 
-        FXMLLoader loader = null;
-        Parent root = null;
-        loader = new FXMLLoader(getClass().getClassLoader().getResource("fx/notdone/VoteScreen.fxml"));
-        root = loader.load();
-        VoteScreenController voteScreenController = loader.getController();
-        voteScreenController.setVariables(election, voter);
-        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        primaryStage.setTitle("VoteScreen");
-        primaryStage.setScene(new Scene(root, 750,700));
-        primaryStage.show();
+
     }
 
     @FXML
@@ -89,7 +79,7 @@ public class VoterPanelController implements Initializable {
     @FXML
     public void back(ActionEvent event) {
         this.actionEvent = event;
-        loadScene("AdminPanel");
+        loadScene("MainPage");
     }
     private List<Election> getUniqueElection(){
         List<Election> elections = getElections();
@@ -99,8 +89,8 @@ public class VoterPanelController implements Initializable {
         for (Election election: elections ) {
             selectionFlag = true;
             for (ElectionVoter electionVoter: electionVoters ) {
-                if(electionVoter.getElectionid() == election.getElectionID()
-                        && electionVoter.getVoterid() == voter.getIdentityNumber()){
+                if(electionVoter.getElectionid() == election.getId()
+                        && electionVoter.getVoterid() == voter.getId()){
                     selectionFlag = false;
                 }
             }
@@ -135,7 +125,31 @@ public class VoterPanelController implements Initializable {
         return voters;*/
         observableElections.addAll(getUniqueElection());
         electionTable.setItems(observableElections);
-
+        electionTable.setRowFactory(tv -> {
+            TableRow<Election> row = new TableRow<>();
+            row.setOnMouseClicked(event -> {
+                if (event.getClickCount() == 2 && (! row.isEmpty()) ) {
+                    Election rowData = row.getItem();
+                    election = rowData;
+                    System.out.println("Double click on: "+rowData.getId());
+                    try {
+                        FXMLLoader loader = null;
+                        Parent root = null;
+                        loader = new FXMLLoader(getClass().getClassLoader().getResource("fx/VoteScreen.fxml"));
+                        root = loader.load();
+                        VoteScreenController voteScreenController = loader.getController();
+                        voteScreenController.setVariables(election, voter);
+                        Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+                        primaryStage.setTitle("VoteScreen");
+                        primaryStage.setScene(new Scene(root, 750,700));
+                        primaryStage.show();
+                    }catch (IOException e){
+                        e.printStackTrace();
+                    }
+                }
+            });
+            return row ;
+        });
     }
     private List<Election> getElections() {
         Configuration config = new Configuration();
@@ -180,7 +194,7 @@ public class VoterPanelController implements Initializable {
         List<ElectionVoter> electionVoters = new ArrayList<>();
         try {
             tx = sesn.beginTransaction();
-            electionVoters = (List) sesn.createQuery("from ElectionVoter where voterid = '" + voter.getIdentityNumber() + "'").list();
+            electionVoters = (List) sesn.createQuery("from ElectionVoter where voterid = '" + voter.getId() + "'").list();
             tx.commit();
         } catch (HibernateException e) {
             e.printStackTrace();
