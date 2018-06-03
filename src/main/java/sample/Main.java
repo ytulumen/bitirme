@@ -12,7 +12,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) throws Exception{
 
         Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fx/MainPage.fxml"));
-        primaryStage.setTitle("MainPage");
+        primaryStage.setTitle("Online Election System");
         primaryStage.setScene(new Scene(root, 750,700));
         primaryStage.show();
     }

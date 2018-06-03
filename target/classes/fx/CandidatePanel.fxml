@@ -22,7 +22,7 @@
       </PasswordField>
       <ImageView fitHeight="28.0" fitWidth="200.0" layoutX="275.0" layoutY="37.0" AnchorPane.topAnchor="37.0">
          <image>
-            <Image url="@../Pictures/software/candidatepanel.png" />
+            <Image url="@../Pictures/Software/candidatepanel.png" />
          </image>
       </ImageView>
    </children>

@@ -23,7 +23,7 @@
       </TableView>
       <ImageView fitHeight="28.0" fitWidth="200.0" layoutX="275.0" layoutY="38.0" AnchorPane.topAnchor="37.0">
          <image>
-            <Image url="@../Pictures/software/editelection.png" />
+            <Image url="@../Pictures/Software/editelection.png" />
          </image>
       </ImageView>
    </children>

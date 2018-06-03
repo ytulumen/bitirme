@@ -21,7 +21,7 @@
       <Button layoutX="684.0" layoutY="25.0" mnemonicParsing="false" onAction="#logout" prefHeight="53.0" prefWidth="40.0" styleClass="toggle-button" stylesheets="@../css/gui.css" />
       <ImageView fitHeight="28.0" fitWidth="200.0" layoutX="275.0" layoutY="37.0" AnchorPane.topAnchor="37.0">
          <image>
-            <Image url="@../Pictures/software/showelections.png" />
+            <Image url="@../Pictures/Software/showelections.png" />
          </image>
       </ImageView>
    </children>

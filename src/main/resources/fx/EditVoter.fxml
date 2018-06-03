@@ -43,7 +43,7 @@
       <Button layoutX="14.0" layoutY="31.0" mnemonicParsing="false" onAction="#back" prefHeight="40.0" prefWidth="40.0" styleClass="back-button" stylesheets="@../css/gui.css" />
       <ImageView fitHeight="28.0" fitWidth="200.0" layoutX="275.0" layoutY="33.0" AnchorPane.topAnchor="37.0">
          <image>
-            <Image url="@../Pictures/software/editvoter.png" />
+            <Image url="@../Pictures/Software/editvoter.png" />
          </image>
       </ImageView>
    </children>

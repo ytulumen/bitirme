@@ -23,7 +23,7 @@
       <TextField fx:id="electionID" layoutX="374.0" layoutY="638.0" promptText="Election ID" stylesheets="@../css/gui.css" />
       <ImageView fitHeight="29.0" fitWidth="200.0" layoutX="274.0" layoutY="36.0" AnchorPane.topAnchor="36.0">
          <image>
-            <Image url="@../Pictures/software/stopvoting.png" />
+            <Image url="@../Pictures/Software/stopvoting.png" />
          </image>
       </ImageView>
    </children>

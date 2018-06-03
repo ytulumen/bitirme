@@ -13,89 +13,89 @@
     -fx-background-color: green,linear-gradient(to bottom, derive(green,60%) 5%,derive(green,90%) 40%);
 }
 .toggle-button {
-    -fx-background-image: url('../Pictures/software/logout.png');
+    -fx-background-image: url('../Pictures/Software/logout.png');
     -fx-background-size: 40px;
     -fx-background-repeat: no-repeat;
     -fx-background-position: center 8px;
 }
 .add-button {
-    -fx-background-image: url('../Pictures/software/add.png');
+    -fx-background-image: url('../Pictures/Software/add.png');
     -fx-background-size: 150px 150px;
     -fx-background-repeat: no-repeat;
 }
 .delete-button {
-    -fx-background-image: url('../Pictures/software/delete.png');
+    -fx-background-image: url('../Pictures/Software/delete.png');
     -fx-background-size: 150px 150px;
     -fx-background-repeat: no-repeat;
 }
 .edit-button {
-    -fx-background-image: url('../Pictures/software/edit.png');
+    -fx-background-image: url('../Pictures/Software/edit.png');
     -fx-background-size: 150px 150px;
     -fx-background-repeat: no-repeat;
 }
 .results-button {
-    -fx-background-image: url('../Pictures/software/results.png');
+    -fx-background-image: url('../Pictures/Software/results.png');
     -fx-background-size: 150px 150px;
     -fx-background-repeat: no-repeat;
 }
 .stop-button {
-    -fx-background-image: url('../Pictures/software/Stop.png');
+    -fx-background-image: url('../Pictures/Software/Stop.png');
     -fx-background-size: 150px 150px;
     -fx-background-repeat: no-repeat;
 }
 .look-button {
-    -fx-background-image: url('../Pictures/software/look.png');
+    -fx-background-image: url('../Pictures/Software/look.png');
     -fx-background-size: 150px 150px;
     -fx-background-repeat: no-repeat;
 }
 .voter-button {
-    -fx-background-image: url('../Pictures/software/voter.png');
+    -fx-background-image: url('../Pictures/Software/voter.png');
     -fx-background-size: 75px 75px;
     -fx-background-repeat: no-repeat;
     -fx-background-position:  center ;
     -fx-padding: 4.996667em 6.166667em 1.0em 1.0em;
 }
 .candidate-button {
-    -fx-background-image: url('../Pictures/software/candidate.png');
+    -fx-background-image: url('../Pictures/Software/candidate.png');
     -fx-background-size: 50px 80px;
     -fx-background-repeat: no-repeat;
     -fx-background-position:  center ;
     -fx-padding: 4.996667em 6.166667em 1.0em 1.0em;
 }
 .election-button {
-    -fx-background-image: url('../Pictures/software/election.png');
+    -fx-background-image: url('../Pictures/Software/election.png');
     -fx-background-size: 50px 75px;
     -fx-background-repeat: no-repeat;
     -fx-background-position:  center ;
     -fx-padding: 4.996667em 6.166667em 1.0em 1.0em;
 }
 .back-button {
-    -fx-background-image: url('../Pictures/software/back.png');
+    -fx-background-image: url('../Pictures/Software/back.png');
     -fx-background-size: 40px;
     -fx-background-repeat: no-repeat;
 }
 .small-add-button {
-    -fx-background-image: url('../Pictures/software/add.png');
+    -fx-background-image: url('../Pictures/Software/add.png');
     -fx-background-size: 50px 50px;
     -fx-background-repeat: no-repeat;
 }
 .small-delete-button {
-    -fx-background-image: url('../Pictures/software/delete.png');
+    -fx-background-image: url('../Pictures/Software/delete.png');
     -fx-background-size: 50px 50px;
     -fx-background-repeat: no-repeat;
 }
 .small-edit-button {
-    -fx-background-image: url('../Pictures/software/edit.png');
+    -fx-background-image: url('../Pictures/Software/edit.png');
     -fx-background-size: 50px 50px;
     -fx-background-repeat: no-repeat;
 }
 .small-stop-button {
-    -fx-background-image: url('../Pictures/software/smallstop.png');
+    -fx-background-image: url('../Pictures/Software/smallstop.png');
     -fx-background-size: 50px 50px;
     -fx-background-repeat: no-repeat;
 }
 .add-picture-button {
-    -fx-background-image: url('../Pictures/software/addpicture.png');
+    -fx-background-image: url('../Pictures/Software/addpicture.png');
     -fx-background-size: 50px 50px;
     -fx-background-repeat: no-repeat;
 }

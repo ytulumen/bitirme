@@ -21,6 +21,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import sample.Model.Candidate;
+import sample.Model.Election;
 
 import java.io.IOException;
 import java.net.URL;
@@ -105,11 +106,12 @@ public class ShowCandidateController implements Initializable {
         try {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fx/" + page +".fxml"));
             Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            primaryStage.setTitle(page);
+            primaryStage.setTitle("Online Election System");
             primaryStage.setScene(new Scene(root, 750,700));
             primaryStage.show();
         }catch (IOException e){
             e.printStackTrace();
         }
     }
+
 }

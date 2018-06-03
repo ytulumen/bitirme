@@ -20,7 +20,7 @@
       <Button layoutX="582.0" layoutY="625.0" mnemonicParsing="false" onAction="#selectElection" prefHeight="53.0" prefWidth="54.0" text="Show" />
       <ImageView fitHeight="29.0" fitWidth="200.0" layoutX="275.0" layoutY="37.0" AnchorPane.topAnchor="37.0">
          <image>
-            <Image url="@../Pictures/software/voterpanel.png" />
+            <Image url="@../Pictures/Software/voterpanel.png" />
          </image>
       </ImageView>
    </children>

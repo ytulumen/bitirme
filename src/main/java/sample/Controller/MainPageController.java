@@ -54,9 +54,9 @@ public class MainPageController implements Initializable {
                 "Candidate"
         );
 
-        choiceBox.setValue("Voter");
-        userName.setText("2222");
-        passwordField.setText("2222");
+        choiceBox.setValue("Admin");
+        userName.setText("Admin");
+        passwordField.setText("admin");
 
     }
 
@@ -133,7 +133,7 @@ public class MainPageController implements Initializable {
 
         }
         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        primaryStage.setTitle(source);
+        primaryStage.setTitle("Online Election System");
         primaryStage.setScene(new Scene(root, 750,700));
         primaryStage.show();
 

@@ -99,7 +99,7 @@
       </TabPane>
       <ImageView fitHeight="28.0" fitWidth="200.0" layoutX="275.0" layoutY="37.0" AnchorPane.leftAnchor="275.0" AnchorPane.rightAnchor="275.0" AnchorPane.topAnchor="37.0">
          <image>
-            <Image url="@../Pictures/software/adminpanel.png" />
+            <Image url="@../Pictures/Software/adminpanel.png" />
          </image>
       </ImageView>
    </children>

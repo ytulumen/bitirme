@@ -31,7 +31,7 @@
       <Button layoutX="684.0" layoutY="25.0" mnemonicParsing="false" onAction="#logout" prefHeight="53.0" prefWidth="40.0" styleClass="toggle-button" stylesheets="@../css/gui.css" />
       <ImageView fitHeight="26.0" fitWidth="200.0" layoutX="275.0" layoutY="38.0" AnchorPane.topAnchor="38.0">
          <image>
-            <Image url="@../Pictures/software/addcandidate.png" />
+            <Image url="@../Pictures/Software/addcandidate.png" />
          </image>
       </ImageView>
    </children>

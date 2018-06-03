@@ -31,6 +31,7 @@ import javax.transaction.Transactional;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -67,7 +68,8 @@ public class CandidatePanelController implements Initializable {
     private void loadImage(ActionEvent event){
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
-        fileChooser.getExtensionFilters().addAll(
+        String currentPath = Paths.get(".").toAbsolutePath().normalize().toString() + "/src/main/resources/Pictures/Candidates";
+        fileChooser.setInitialDirectory(new File(currentPath));fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.gif"),
                 new FileChooser.ExtensionFilter("All Files", "*.*"));
 
@@ -157,7 +159,7 @@ public class CandidatePanelController implements Initializable {
         try {
             Parent root = FXMLLoader.load(getClass().getClassLoader().getResource("fx/" + page +".fxml"));
             Stage primaryStage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
-            primaryStage.setTitle(page);
+            primaryStage.setTitle("Online Election System");
             primaryStage.setScene(new Scene(root, 750,700));
             primaryStage.show();
         }catch (IOException e){
