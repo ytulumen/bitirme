@@ -73,10 +73,13 @@ public class ShowResultsController implements Initializable {
                     try {
                         FXMLLoader loader = null;
                         Parent root = null;
-                        loader = new FXMLLoader(getClass().getClassLoader().getResource("fx/ShowResultsAsCandidates.fxml"));
+                        loader = new FXMLLoader(getClass().getClassLoader().getResource("fx/NewShowResults.fxml"));
                         root = loader.load();
-                        ShowResultsAsCandidatesController showResultsAsCandidatesController = loader.getController();
-                        showResultsAsCandidatesController.setVariables(election);
+                        //ShowResultsAsCandidatesController showResultsAsCandidatesController = loader.getController();
+                        //showResultsAsCandidatesController.setVariables(election);
+                        NewShowResultsController newShowResultsController = loader.getController();
+                        newShowResultsController.setVariables(election);
+
                         Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
                         primaryStage.setTitle("Online Election System");
                         primaryStage.setScene(new Scene(root, 750,700));

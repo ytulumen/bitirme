@@ -2,22 +2,17 @@ package sample.Controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Side;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.chart.PieChart;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -28,77 +23,30 @@ import org.hibernate.service.ServiceRegistry;
 import sample.Model.Candidate;
 import sample.Model.Election;
 
-import javax.imageio.ImageIO;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class ShowResultsAsCandidatesController implements Initializable {
+public class NewShowResultsController implements Initializable {
+
     private static SessionFactory factory;
     private static ServiceRegistry serviceRegistry;
     private ActionEvent actionEvent;
     private Election election;
+    private List<Candidate> candidates;
+    private ObservableList<PieChart.Data> dataList = FXCollections.observableArrayList();
 
     @FXML
-    private TableView<Candidate> candidateTable;
-
-    @FXML
-    private TableColumn<Candidate, Integer> idColumn;
-
-    @FXML
-    private TableColumn<Candidate, String> nameColumn;
-
-    @FXML
-    private TableColumn<Candidate, String> surnameColumn;
-
-    @FXML
-    private TableColumn<Candidate, String> voteColumn;
-
-    @FXML
-    private TableColumn<Candidate, String> descriptionColumn;
-
-    @FXML
-    private TableColumn<Candidate, Integer> electionIdColumn;
-
-    @FXML
-    private TableColumn<Candidate, ImageView> imageColumn;
-
-    private ObservableList<Candidate> observableCandidate = FXCollections.observableArrayList();
+    PieChart pieChart;
 
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        idColumn.setCellValueFactory(new PropertyValueFactory<Candidate, Integer>("identityNumber"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory<Candidate, String>("name"));
-        surnameColumn.setCellValueFactory(new PropertyValueFactory<Candidate, String>("surname"));
-        voteColumn.setCellValueFactory(new PropertyValueFactory<Candidate, String>("votecounter"));
-        descriptionColumn.setCellValueFactory(new PropertyValueFactory<Candidate, String>("description"));
-        electionIdColumn.setCellValueFactory(new PropertyValueFactory<Candidate, Integer>("electionid"));
 
-
-        imageColumn.setCellValueFactory(new PropertyValueFactory<Candidate, ImageView>("imageView"));
-        imageColumn.setMinWidth(100);
-        /*imageColumn.setCellValueFactory(new Callback<TableColumn<Candidate,Image>,TableCell<Candidate,Image>>(){
-            @Override
-            public TableCell<Candidate,Image> call(TableColumn<Candidate,Image> param) {
-                TableCell<Candidate,Image> cell = new TableCell<Candidate,Image>(){
-                    public void updateItem(Candidate item, boolean empty) {
-                        if(item!=null){
-                            ImageView imageview = new ImageView();
-                            imageview.setFitHeight(50);
-                            imageview.setFitWidth(50);
-                            imageview.setImage(new Image());
-                        }
-                    }
-                };
-                return cell;
-            }
-
-        });*/
     }
     @FXML
     public void logout(ActionEvent event) throws IOException {
@@ -110,7 +58,6 @@ public class ShowResultsAsCandidatesController implements Initializable {
         this.actionEvent = event;
         loadScene("AdminPanel");
     }
-
     private List<Candidate> getCandidates() {
         Configuration config = new Configuration();
         config.configure();
@@ -147,7 +94,24 @@ public class ShowResultsAsCandidatesController implements Initializable {
     }
     public void setVariables(Election election){
         this.election = election;
-        observableCandidate.addAll(getCandidates());
-        candidateTable.setItems(observableCandidate);
+        candidates = getCandidates();
+        int voteCounter = 0;
+        for (Candidate candidate: candidates){
+            voteCounter += candidate.getVotecounter();
+        }
+        for (Candidate candidate: candidates) {
+            Double percent = (new Double(candidate.getVotecounter())/new Double(voteCounter)) * 100.0;
+            dataList.add(new PieChart.Data(candidate.getName() + " %" +
+                    new DecimalFormat(".##").format(percent), candidate.getVotecounter()));
+
+        }
+        pieChart.setData(dataList);
+
+
+
+        pieChart.setLegendSide(Side.LEFT);
+
+        //observableCandidate.addAll(getCandidates());
+        //candidateTable.setItems(observableCandidate);
     }
 }

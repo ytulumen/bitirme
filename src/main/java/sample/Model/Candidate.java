@@ -1,9 +1,14 @@
 package sample.Model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Table;
+import javafx.embed.swing.SwingFXUtils;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import javax.imageio.ImageIO;
+import javax.persistence.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 @Entity
 @Table(name = "candidates")
@@ -21,7 +26,37 @@ public class Candidate extends Human {
     @Column(name = "votecounter")
     private int votecounter;
 
+    @Transient
+    private ImageView imageView;
+
+    public ImageView getImageView() {
+        return imageView;
+    }
+
+    public void setImage(){
+        try {
+            BufferedImage bufferedImage;
+            bufferedImage = ImageIO.read(new File(imagePath));
+            Image image = SwingFXUtils.toFXImage(bufferedImage, null);
+            imageView = new ImageView(image);
+            double height = image.getHeight() * 0.7;
+            while (height > 100){
+                height *= 0.9;
+            }
+            double width = image.getWidth() * 0.7;
+            while (width > 100){
+                width *= 0.9;
+            }
+            imageView.setFitHeight(height);
+            imageView.setFitWidth(width);
+//            imageView.setImage(image);
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
     public Candidate() {
+        //setImage();
     }
 
     public Candidate(String name, String surname, long identityNumber, String password, String street,

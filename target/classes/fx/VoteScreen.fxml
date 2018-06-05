@@ -6,19 +6,18 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane prefHeight="700.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.VoteScreenController">
    <children>
       <Button layoutX="14.0" layoutY="31.0" mnemonicParsing="false" onAction="#back" prefHeight="40.0" prefWidth="40.0" styleClass="back-button" stylesheets="@../css/gui.css" />
       <Button layoutX="684.0" layoutY="25.0" mnemonicParsing="false" onAction="#logout" prefHeight="53.0" prefWidth="40.0" styleClass="toggle-button" stylesheets="@../css/gui.css" />
-      <TableView fx:id="candidateTable" layoutY="97.0" prefHeight="603.0" prefWidth="750.0">
+      <TableView fx:id="candidateTable" fixedCellSize="100.0" layoutY="97.0" prefHeight="603.0" prefWidth="750.0">
          <columns>
-            <TableColumn fx:id="idColumn" prefWidth="102.0" text="Identitiy Number" />
-            <TableColumn fx:id="nameColumn" prefWidth="88.0" text="Name" />
-            <TableColumn fx:id="surnameColumn" prefWidth="85.0" text="Surname" />
-            <TableColumn fx:id="addressColumn" prefWidth="155.0" text="Address" />
-            <TableColumn fx:id="descriptionColumn" prefWidth="227.0" text="Description" />
-            <TableColumn fx:id="candidateImageTableColumn" prefWidth="75.0" text="Image" />
+            <TableColumn fx:id="idColumn" prefWidth="73.0" text="ID" />
+            <TableColumn fx:id="nameColumn" prefWidth="83.0" text="Name" />
+            <TableColumn fx:id="surnameColumn" prefWidth="110.0" text="Surname" />
+            <TableColumn fx:id="addressColumn" prefWidth="151.0" text="Address" />
+            <TableColumn fx:id="descriptionColumn" prefWidth="172.0" text="Description" />
+            <TableColumn fx:id="candidateImageTableColumn" prefWidth="160.0" text="Picture" />
          </columns>
       </TableView>
    </children>

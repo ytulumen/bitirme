@@ -62,11 +62,11 @@ public class VoteScreenController implements Initializable {
     @FXML
     private TableColumn<Candidate, String> descriptionColumn;
 
+    @FXML
+    private TableColumn<Candidate, ImageView> candidateImageTableColumn;
+
 /*    @FXML
     private TableColumn<Candidate, Integer> electionIdColumn;*/
-
-    @FXML
-    private TableColumn candidateImageTableColumn;
 
     private ObservableList<Candidate> observableCandidate = FXCollections.observableArrayList();
 
@@ -82,8 +82,21 @@ public class VoteScreenController implements Initializable {
     }
     @FXML
     public void back(ActionEvent event) {
-        this.actionEvent = event;
-        loadScene("VoterPanel");
+        try {
+            FXMLLoader loader = null;
+            Parent root = null;
+            loader = new FXMLLoader(getClass().getClassLoader().getResource("fx/VoterPanel.fxml"));
+            root = loader.load();
+            VoterPanelController voterPanelController = loader.getController();
+            voterPanelController.setVoterFromOutside(voter);
+            voterPanelController.loadVoter();
+            Stage primaryStage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            primaryStage.setTitle("Online Election System");
+            primaryStage.setScene(new Scene(root, 750,700));
+            primaryStage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
     public void setVariables(Election election, Voter voter){
         this.election = election;
@@ -96,8 +109,12 @@ public class VoteScreenController implements Initializable {
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<Candidate, String>("description"));
 //        electionIdColumn.setCellValueFactory(new PropertyValueFactory<Candidate, Integer>("electionid"));
         //TODO:show IMAGEEEE
+        candidateImageTableColumn.setCellValueFactory(new PropertyValueFactory<>("imageView"));
         observableCandidate.addAll(getCandidates());
+        //candidateTable.getColumns().add(candidateImageTableColumn);
         candidateTable.setItems(observableCandidate);
+
+
         candidateTable.setRowFactory(tv -> {
             TableRow<Candidate> row = new TableRow<>();
             row.setOnMouseClicked(event -> {
@@ -201,7 +218,9 @@ public class VoteScreenController implements Initializable {
         } finally {
             sesn.close();
         }
-
+        for (Candidate candidate:candidates ) {
+            candidate.setImage();
+        }
         return candidates;
     }
     private void loadScene(String page) {
