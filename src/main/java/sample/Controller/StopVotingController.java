@@ -101,7 +101,7 @@ public class StopVotingController implements Initializable {
                     }
                 }
                 if (deleteFlag){
-                    errorAlert("There is an candidate with " + electionID.getText()
+                    errorAlert("There is any election with " + electionID.getText()
                             + " id or check your database connections");
                     electionID.getStyleClass().remove("best");
                     electionID.getStyleClass().add("error");
@@ -110,7 +110,7 @@ public class StopVotingController implements Initializable {
                 e.printStackTrace();
                 electionID.getStyleClass().remove("best");
                 electionID.getStyleClass().add("error");
-                errorAlert("Invalid candidate id " + electionID.getText()
+                errorAlert("Invalid election id " + electionID.getText()
                         + " or check your database connections");
             }
         }

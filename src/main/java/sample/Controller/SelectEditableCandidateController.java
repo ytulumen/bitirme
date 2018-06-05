@@ -14,6 +14,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -60,6 +61,10 @@ public class SelectEditableCandidateController implements Initializable {
     @FXML
     private TableColumn<Candidate, Integer> electionIdColumn;
 
+    @FXML
+    private TableColumn<Candidate, ImageView> candidateImageTableColumn;
+
+
     private ObservableList<Candidate> observableCandidate = FXCollections.observableArrayList();
 
 
@@ -78,7 +83,7 @@ public class SelectEditableCandidateController implements Initializable {
         addressColumn.setCellValueFactory(new PropertyValueFactory<Candidate, String>("street"));
         descriptionColumn.setCellValueFactory(new PropertyValueFactory<Candidate, String>("description"));
         electionIdColumn.setCellValueFactory(new PropertyValueFactory<Candidate, Integer>("electionid"));
-
+        candidateImageTableColumn.setCellValueFactory(new PropertyValueFactory<>("imageView"));
         observableCandidate.addAll(getCandidates());
         candidateTable.setItems(observableCandidate);
     }
@@ -160,7 +165,9 @@ public class SelectEditableCandidateController implements Initializable {
         } finally {
             sesn.close();
         }
-
+        for (Candidate candidate:candidates ) {
+            candidate.setImage();
+        }
         return candidates;
     }
     private void errorAlert() {

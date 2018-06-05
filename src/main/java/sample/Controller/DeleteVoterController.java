@@ -103,7 +103,7 @@ public class DeleteVoterController implements Initializable {
                     }
                 }
                 if (deleteFlag){
-                    errorAlert("There is an candidate with " + voterID.getText()
+                    errorAlert("There is no voter with " + voterID.getText()
                             + " id or check your database connections");
                     voterID.getStyleClass().remove("best");
                     voterID.getStyleClass().add("error");
@@ -112,7 +112,7 @@ public class DeleteVoterController implements Initializable {
                 e.printStackTrace();
                 voterID.getStyleClass().remove("best");
                 voterID.getStyleClass().add("error");
-                errorAlert("Invalid candidate id " + voterID.getText()
+                errorAlert("Invalid voter id " + voterID.getText()
                         + " or check your database connections");
             }
         }

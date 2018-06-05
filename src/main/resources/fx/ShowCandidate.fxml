@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.image.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="700.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ShowCandidateController">
+<AnchorPane prefHeight="700.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ShowCandidateController">
    <children>
-      <TableView fx:id="candidateTable" layoutY="97.0" prefHeight="603.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="97.0">
+      <TableView fx:id="candidateTable" fixedCellSize="100.0" layoutY="97.0" prefHeight="603.0" prefWidth="750.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="97.0">
          <columns>
-            <TableColumn fx:id="idColumn" prefWidth="102.0" text="Identitiy Number" />
-            <TableColumn fx:id="nameColumn" prefWidth="88.0" text="Name" />
-            <TableColumn fx:id="surnameColumn" prefWidth="85.0" text="Surname" />
-            <TableColumn fx:id="addressColumn" prefWidth="155.0" text="Address" />
-            <TableColumn fx:id="descriptionColumn" prefWidth="227.0" text="Description" />
-            <TableColumn fx:id="electionIdColumn" prefWidth="92.0" text="Election ID" />
+            <TableColumn fx:id="idColumn" prefWidth="68.0" text="ID" />
+            <TableColumn fx:id="nameColumn" prefWidth="81.0" text="Name" />
+            <TableColumn fx:id="surnameColumn" prefWidth="100.0" text="Surname" />
+            <TableColumn fx:id="addressColumn" prefWidth="150.0" text="Address" />
+            <TableColumn fx:id="descriptionColumn" prefWidth="145.0" text="Description" />
+            <TableColumn fx:id="electionIdColumn" prefWidth="62.0" text="E ID" />
+            <TableColumn fx:id="candidateImageTableColumn" prefWidth="143.0" text="Picture" />
          </columns>
       </TableView>
       <Button layoutX="684.0" layoutY="25.0" mnemonicParsing="false" onAction="#logout" prefHeight="53.0" prefWidth="40.0" styleClass="toggle-button" stylesheets="@../css/gui.css" />
